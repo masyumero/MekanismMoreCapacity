@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.masyumero.mekanismmorecapacity.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "MekanismMoreCapacity.refmap.json",
+  "mixins": [
+    "MixinSPSMultiblockData",
+    "machine.MixinTileEntityAntiprotonicNucleosynthesizer",
+    "machine.MixinTileEntityChemicalCrystallizer",
+    "machine.MixinTileEntityChemicalDissolutionChamber",
+    "machine.MixinTileEntityChemicalInfuser",
+    "machine.MixinTileEntityChemicalOxidizer",
+    "machine.MixinTileEntityChemicalWasher",
+    "machine.MixinTileEntityElectrolyticSeparator",
+    "machine.MixinTileEntityIsotopicCentrifuge",
+    "machine.MixinTileEntityMetallurgicInfuser",
+    "machine.MixinTileEntityNutritionalLiquifier",
+    "machine.MixinTileEntityPressurizedReactionChamber",
+    "machine.MixinTileEntityRotaryCondensentrator",
+    "machine.MixinTileEntitySolarNeutronActivator"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
