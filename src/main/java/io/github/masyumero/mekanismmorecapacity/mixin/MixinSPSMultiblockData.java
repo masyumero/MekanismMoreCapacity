@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(value = SPSMultiblockData.class, remap = false)
 public class MixinSPSMultiblockData {
     @ModifyConstant(method = "getMaxInputGas", constant = @Constant(longValue = 2L))
-    private long modifyInputTankCapacityCapacity(long c) {
+    private long modifyInputTankCapacity(long c) {
         return 100000;
     }
 }

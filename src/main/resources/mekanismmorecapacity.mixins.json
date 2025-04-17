@@ -6,6 +6,7 @@
   "refmap": "MekanismMoreCapacity.refmap.json",
   "mixins": [
     "MixinSPSMultiblockData",
+    "MixinTileEntityMetallurgicInfuserFactory",
     "machine.MixinTileEntityAntiprotonicNucleosynthesizer",
     "machine.MixinTileEntityChemicalCrystallizer",
     "machine.MixinTileEntityChemicalDissolutionChamber",
