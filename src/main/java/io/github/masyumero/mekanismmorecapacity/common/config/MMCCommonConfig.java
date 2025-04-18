@@ -32,7 +32,7 @@ public class MMCCommonConfig extends BaseMekanismConfig {
     public MMCCommonConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Adjustment of the capacity of the machine's internal tank").push("sps");
-        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 1000000, Vanilla: 2").defineInRange("inputTankCapacity", 1000000, 1,1000000000L));
+        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 200, Vanilla: 2").defineInRange("inputTankCapacity", 200, 1,1000000000L));
         builder.pop().push("AntiprotonicNucleosynthesizer");
         AntiprotonicNucleosynthesizer = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalCrystallizer");
