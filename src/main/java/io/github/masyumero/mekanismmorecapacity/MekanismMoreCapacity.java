@@ -4,8 +4,6 @@ import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 
-import java.nio.file.Path;
-
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MekanismMoreCapacity.MODID)
 public class MekanismMoreCapacity {
