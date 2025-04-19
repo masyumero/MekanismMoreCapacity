@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntitySolarNeutronActivator {
     @ModifyConstant(method = "getInitialGasTanks",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MMCcommon.SolarNeutronActivator.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.SolarNeutronActivator.get();
     }
 }

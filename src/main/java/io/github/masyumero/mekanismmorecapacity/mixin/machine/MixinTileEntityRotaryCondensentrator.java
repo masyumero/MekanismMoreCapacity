@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityRotaryCondensentrator {
     @ModifyConstant(method = "getInitialGasTanks",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MMCcommon.RotaryCondensentratorChemical.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.RotaryCondensentratorChemical.get();
     }
     @ModifyConstant(method = "getInitialFluidTanks",constant = @Constant(intValue = 10000))
     private int modifyFluidTankCapacity(int c){
-        return MMCConfig.MMCcommon.RotaryCondensentratorFluid.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.RotaryCondensentratorFluid.get();
     }
 }

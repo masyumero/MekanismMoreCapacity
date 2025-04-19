@@ -6,7 +6,7 @@ import mekanism.common.config.value.CachedLongValue;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
 
-public class MMCCommonConfig extends BaseMekanismConfig {
+public class MMCMekMachineConfig extends BaseMekanismConfig {
 
     private final ForgeConfigSpec configSpec;
     public final CachedLongValue AntiprotonicNucleosynthesizer;
@@ -29,10 +29,16 @@ public class MMCCommonConfig extends BaseMekanismConfig {
     public final CachedIntValue RotaryCondensentratorFluid;
     public final CachedLongValue SolarNeutronActivator;
     public final CachedLongValue sps;
-    public final CachedLongValue MetallurgicInfuserFactory;
-    public final CachedLongValue Factorys;
+    public final CachedLongValue BasicMetallurgicInfuserFactory;
+    public final CachedLongValue AdvancedMetallurgicInfuserFactory;
+    public final CachedLongValue EliteMetallurgicInfuserFactory;
+    public final CachedLongValue UltimateMetallurgicInfuserFactory;
+    public final CachedLongValue BasicFactories;
+    public final CachedLongValue AdvancedFactories;
+    public final CachedLongValue EliteFactories;
+    public final CachedLongValue UltimateFactories;
 
-    public MMCCommonConfig() {
+    public MMCMekMachineConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Adjustment of the capacity of the machine's internal tank");
         builder.push("AntiprotonicNucleosynthesizer");
@@ -40,8 +46,8 @@ public class MMCCommonConfig extends BaseMekanismConfig {
         builder.pop().push("ChemicalCrystallizer");
         ChemicalCrystallizer = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalDissolutionChamberInput");
-        ChemicalDissolutionChamberInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputTankCapacity",1000000,1,Long.MAX_VALUE));
-        ChemicalDissolutionChamberOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalDissolutionChamberInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalDissolutionChamberOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalInfuser");
         ChemicalInfuser = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalOxidizer");
@@ -70,16 +76,23 @@ public class MMCCommonConfig extends BaseMekanismConfig {
         SolarNeutronActivator = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("sps");
         sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 200, Vanilla: 2").defineInRange("inputTankCapacity", 200, 1,1000000000L));
-        builder.pop().push("Factorys").push("InfusingFactory");
-        MetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). This number is multiplied by the number of processes. Default: 100000, Vanilla: 1000").defineInRange("chemicalTankCapacity",100000,1,(Long.MAX_VALUE/9)));;
+        builder.pop().push("factories").push("InfusingFactory");
+        BasicMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 300000, Vanilla: 3000").defineInRange("basicChemicalTankCapacity",300000,1,Long.MAX_VALUE));
+        AdvancedMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 500000, Vanilla: 5000").defineInRange("advancedChemicalTankCapacity",500000,1,Long.MAX_VALUE));
+        EliteMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 700000, Vanilla: 7000").defineInRange("eliteChemicalTankCapacity",700000,1,Long.MAX_VALUE));
+        UltimateMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 900000, Vanilla: 9000").defineInRange("ultimateChemicalTankCapacity",900000,1,Long.MAX_VALUE));
         builder.pop().push("CompressingFactory, injectingFactory, purifyingFactory");
-        Factorys = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). This number is multiplied by the number of processes. Default: 21000, Vanilla: 210").defineInRange("chemicalTankCapacity",21000,1,(Long.MAX_VALUE/9)));;
+        BasicFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalTankCapacity",63000,1,Long.MAX_VALUE));
+        AdvancedFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalTankCapacity",105000,1,Long.MAX_VALUE));
+        EliteFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalTankCapacity",147000,1,Long.MAX_VALUE));
+        UltimateFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalTankCapacity",189000,1,Long.MAX_VALUE));
+        builder.pop().pop();
         configSpec = builder.build();
     }
 
     @Override
     public String getFileName() {
-        return "MMCcommon";
+        return "MMCMekMachine";
     }
 
     @Override

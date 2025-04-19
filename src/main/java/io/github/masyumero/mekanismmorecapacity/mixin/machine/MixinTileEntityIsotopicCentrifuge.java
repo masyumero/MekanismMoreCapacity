@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityIsotopicCentrifuge {
     @ModifyConstant(method = "getInitialGasTanks",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MMCcommon.IsotopicCentrifuge.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.IsotopicCentrifuge.get();
     }
 }

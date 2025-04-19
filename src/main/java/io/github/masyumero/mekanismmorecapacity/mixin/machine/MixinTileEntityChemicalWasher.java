@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityChemicalWasher {
     @ModifyConstant(method = "getInitialSlurryTanks",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MMCcommon.ChemicalWasherSlurry.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.ChemicalWasherSlurry.get();
     }
     @ModifyConstant(method = "getInitialFluidTanks",constant = @Constant(intValue = 10000))
     private int modifyFluidTankCapacity(int c){
-        return MMCConfig.MMCcommon.ChemicalWasherFluid.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.ChemicalWasherFluid.get();
     }
 }

@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityNutritionalLiquifier {
     @ModifyConstant(method = "getInitialFluidTanks",constant = @Constant(intValue = 10000))
     private int modifyFluidTankCapacity(int i){
-        return MMCConfig.MMCcommon.NutritionalLiquifier.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.NutritionalLiquifier.get();
     }
 }

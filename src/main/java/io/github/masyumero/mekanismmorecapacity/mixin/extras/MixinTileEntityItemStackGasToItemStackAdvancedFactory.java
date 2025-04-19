@@ -1,5 +1,7 @@
-package io.github.masyumero.mekanismmorecapacity.mixin.factory;
+package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemStackGasToItemStackAdvancedFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemAdvancedFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -16,8 +18,6 @@ import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;
-import mekanism.common.tile.factory.TileEntityItemStackGasToItemStackFactory;
-import mekanism.common.tile.factory.TileEntityItemToItemFactory;
 import mekanism.common.tile.interfaces.IHasDumpButton;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,17 +30,17 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(value = TileEntityItemStackGasToItemStackFactory.class,remap = false)
-public abstract class MixinTileEntityItemStackGasToItemStackFactory extends TileEntityItemToItemFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
+@Mixin(value = TileEntityItemStackGasToItemStackAdvancedFactory.class,remap = false)
+public abstract class MixinTileEntityItemStackGasToItemStackAdvancedFactory extends TileEntityItemToItemAdvancedFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
         IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<Gas, GasStack, ItemStackGasToItemStackRecipe>, IRecipeLookupHandler.ConstantUsageRecipeLookupHandler {
-    
-    protected MixinTileEntityItemStackGasToItemStackFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
+
+    protected MixinTileEntityItemStackGasToItemStackAdvancedFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
     }
-    
+
     @Shadow
     public IGasTank gasTank;
-    
+
     @Redirect(method = "getInitialGasTanks",at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/holder/chemical/ChemicalTankHelper;build()Lmekanism/common/capabilities/holder/chemical/IChemicalTankHolder;"))
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(ChemicalTankHelper instance, IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper.forSideGasWithConfig(this::getDirection, this::getConfig);
@@ -55,7 +55,6 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
         return builder.build();
     }
 
-
     @Unique
     private long mekanismMoreCapacity$getProcesses() {
         return tier.processes;
@@ -64,10 +63,10 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
     @Unique
     private long mekanismMoreCapacity$getConfigValue() {
         return switch ((int) mekanismMoreCapacity$getProcesses()) {
-            case 3 -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-            case 5 -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-            case 7 -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-            case 9 -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+            case 11 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteFactories.get();
+            case 13 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeFactories.get();
+            case 15 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicFactories.get();
+            case 17 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteFactories.get();
             default -> throw new IllegalStateException("Unexpected value: " + (int) mekanismMoreCapacity$getProcesses());
         };
     }

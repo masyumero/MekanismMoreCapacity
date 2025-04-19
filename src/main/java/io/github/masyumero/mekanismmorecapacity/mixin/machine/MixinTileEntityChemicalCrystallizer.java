@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityChemicalCrystallizer {
     @ModifyConstant(method = "presetVariables",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MMCcommon.ChemicalCrystallizer.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.ChemicalCrystallizer.get();
     }
 }

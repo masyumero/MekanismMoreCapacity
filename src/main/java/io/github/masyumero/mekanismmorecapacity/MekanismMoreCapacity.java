@@ -15,4 +15,5 @@ public class MekanismMoreCapacity {
     public MekanismMoreCapacity() {
         MMCConfig.registerConfigs(ModLoadingContext.get());
     }
+
 }

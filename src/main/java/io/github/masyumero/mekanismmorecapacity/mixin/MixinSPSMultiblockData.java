@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinSPSMultiblockData {
     @ModifyConstant(method = "getMaxInputGas", constant = @Constant(longValue = 2L))
     private long modifyInputTankCapacity(long c) {
-        return MMCConfig.MMCcommon.sps.getAsLong();
+        return MMCConfig.MEK_MACHINE_CONFIG.sps.getAsLong();
     }
 }

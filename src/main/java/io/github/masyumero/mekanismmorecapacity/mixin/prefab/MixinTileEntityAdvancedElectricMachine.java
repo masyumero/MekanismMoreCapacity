@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityAdvancedElectricMachine {
     @ModifyConstant(method = "getInitialGasTanks",constant = @Constant(longValue = 210L))
     private long modifyChemicalTankCapacity(long c) {
-        return MMCConfig.MMCcommon.CompressingInjectingPurifying.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.CompressingInjectingPurifying.get();
     }
 }

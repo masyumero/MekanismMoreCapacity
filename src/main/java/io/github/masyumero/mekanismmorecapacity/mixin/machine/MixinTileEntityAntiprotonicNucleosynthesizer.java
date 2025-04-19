@@ -11,6 +11,6 @@ public class MixinTileEntityAntiprotonicNucleosynthesizer {
 
     @ModifyConstant(method = "getInitialGasTanks",constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c) {
-        return MMCConfig.MMCcommon.AntiprotonicNucleosynthesizer.get();
+        return MMCConfig.MEK_MACHINE_CONFIG.AntiprotonicNucleosynthesizer.get();
     }
 }
