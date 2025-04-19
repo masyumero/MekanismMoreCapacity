@@ -6,7 +6,8 @@
   "refmap": "MekanismMoreCapacity.refmap.json",
   "mixins": [
     "MixinSPSMultiblockData",
-    "MixinTileEntityMetallurgicInfuserFactory",
+    "factory.MixinTileEntityItemStackGasToItemStackFactory",
+    "factory.MixinTileEntityMetallurgicInfuserFactory",
     "machine.MixinTileEntityAntiprotonicNucleosynthesizer",
     "machine.MixinTileEntityChemicalCrystallizer",
     "machine.MixinTileEntityChemicalDissolutionChamber",
@@ -19,7 +20,8 @@
     "machine.MixinTileEntityNutritionalLiquifier",
     "machine.MixinTileEntityPressurizedReactionChamber",
     "machine.MixinTileEntityRotaryCondensentrator",
-    "machine.MixinTileEntitySolarNeutronActivator"
+    "machine.MixinTileEntitySolarNeutronActivator",
+    "prefab.MixinTileEntityAdvancedElectricMachine"
   ],
   "client": [
   ],
