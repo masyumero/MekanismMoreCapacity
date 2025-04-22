@@ -47,18 +47,18 @@ public abstract class MixinTileEntityMetallurgicInfuserAdvancedFactory extends T
 
 
     @Unique
-    private long mekanismMoreCapacity$getProcesses() {
-        return tier.processes;
+    private String mekanismMoreCapacity$getTier() {
+        return tier.getAdvanceTier().getSimpleName();
     }
 
     @Unique
     private long mekanismMoreCapacity$getConfigValue() {
-        return switch ((int) mekanismMoreCapacity$getProcesses()) {
-            case 11 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteMetallurgicInfuserFactoryExtras.get();
-            case 13 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeMetallurgicInfuserFactoryExtras.get();
-            case 15 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicMetallurgicInfuserFactoryExtras.get();
-            case 17 -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteMetallurgicInfuserFactoryExtras.get();
-            default -> throw new IllegalStateException("Unexpected value: " + (int) mekanismMoreCapacity$getProcesses());
+        return switch (mekanismMoreCapacity$getTier()) {
+            case "Absolute" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteMetallurgicInfuserFactoryExtras.get();
+            case "Supreme" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeMetallurgicInfuserFactoryExtras.get();
+            case "Cosmic" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicMetallurgicInfuserFactoryExtras.get();
+            case "Infinite" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteMetallurgicInfuserFactoryExtras.get();
+            default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
         };
     }
 }
