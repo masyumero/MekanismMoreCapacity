@@ -21,6 +21,7 @@ import mekanism.common.tile.factory.TileEntityItemToItemFactory;
 import mekanism.common.tile.interfaces.IHasDumpButton;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -44,7 +45,7 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
     @Redirect(method = "getInitialGasTanks",at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/holder/chemical/ChemicalTankHelper;build()Lmekanism/common/capabilities/holder/chemical/IChemicalTankHolder;"))
     public IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(ChemicalTankHelper instance, IContentsListener listener) {
         ChemicalTankHelper<Gas, GasStack, IGasTank> builder = ChemicalTankHelper.forSideGasWithConfig(this::getDirection, this::getConfig);
-        if (allowExtractingChemical()) {
+        if (mekanismMoreCapacity$allowExtractingChemical()) {
             gasTank = ChemicalTankBuilder.GAS.create(mekanismMoreCapacity$getConfigValue(), this::containsRecipeB,
                     markAllMonitorsChanged(listener));
         } else {
@@ -57,22 +58,38 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
 
 
     @Unique
-    private long mekanismMoreCapacity$getProcesses() {
-        return tier.processes;
+    private String mekanismMoreCapacity$getTier() {
+        return tier.getBaseTier().getSimpleName();
     }
 
     @Unique
     private long mekanismMoreCapacity$getConfigValue() {
-        return switch ((int) mekanismMoreCapacity$getProcesses()) {
-            case 3 -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-            case 5 -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-            case 7 -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-            case 9 -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
-            default -> throw new IllegalStateException("Unexpected value: " + (int) mekanismMoreCapacity$getProcesses());
-        };
+        if(ModList.get().isLoaded("evolvedmekanism")) {
+            return switch (mekanismMoreCapacity$getTier()) {
+                case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
+                case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
+                case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
+                case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+                case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.OVERCLOCKEDFactories.get();
+                case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.QUANTUMFactories.get();
+                case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.DENSEFactories.get();
+                case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MULTIVERSALFactories.get();
+                case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CREATIVEFactories.get();
+                default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+            };
+        } else {
+            return switch (mekanismMoreCapacity$getTier()) {
+                case  "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
+                case  "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
+                case  "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
+                case  "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+                default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+            };
+        }
     }
 
-    private boolean allowExtractingChemical() {
+    @Unique
+    private boolean mekanismMoreCapacity$allowExtractingChemical() {
         return Attribute.get(blockProvider, AttributeFactoryType.class).getFactoryType() == FactoryType.COMPRESSING;
     }
 }

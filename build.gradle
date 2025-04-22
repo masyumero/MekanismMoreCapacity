@@ -157,8 +157,12 @@ dependencies {
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly "mekanism:Mekanism:${mekanism_version}"
+    compileOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
+    compileOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
     implementation fg.deobf("curse.maven:mekanism-science-1103224:6421777")
-    implementation fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
+
+    //runtimeOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
+    runtimeOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions

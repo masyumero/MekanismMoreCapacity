@@ -6,6 +6,7 @@
   "refmap": "MekanismMoreCapacity.refmap.json",
   "mixins": [
     "MixinSPSMultiblockData",
+    "evolved.MixinTileEntityChemixer",
     "extras.MixinTileEntityAdvancedElectricPump",
     "extras.MixinTileEntityItemStackGasToItemStackAdvancedFactory",
     "extras.MixinTileEntityMetallurgicInfuserAdvancedFactory",

@@ -17,6 +17,7 @@ import mekanism.common.tile.factory.TileEntityMetallurgicInfuserFactory;
 import mekanism.common.tile.interfaces.IHasDumpButton;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -44,19 +45,35 @@ public abstract class MixinTileEntityMetallurgicInfuserFactory extends TileEntit
     }
 
     @Unique
-    private long mekanismMoreCapacity$getProcesses() {
-        return tier.processes;
+    private String mekanismMoreCapacity$getTier() {
+        return tier.getBaseTier().getSimpleName();
     }
 
     @Unique
     private long mekanismMoreCapacity$getConfigValue() {
-        return switch ((int) mekanismMoreCapacity$getProcesses()) {
-            case 3 -> MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory.get();
-            case 5 -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedMetallurgicInfuserFactory.get();
-            case 7 -> MMCConfig.MEK_MACHINE_CONFIG.EliteMetallurgicInfuserFactory.get();
-            case 9 -> MMCConfig.MEK_MACHINE_CONFIG.UltimateMetallurgicInfuserFactory.get();
-            default -> throw new IllegalStateException("Unexpected value: " + (int) mekanismMoreCapacity$getProcesses());
-        };
+        if(ModList.get().isLoaded("evolvedmekanism")) {
+            return switch (mekanismMoreCapacity$getTier()) {
+                case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
+                case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
+                case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
+                case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+                case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.OVERCLOCKEDMetallurgicInfuserFactoryEvolved.get();
+                case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.QUANTUMFMetallurgicInfuserFactoryEvolved.get();
+                case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.DENSEMetallurgicInfuserFactoryEvolved.get();
+                case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MULTIVERSALMetallurgicInfuserFactoryEvolved.get();
+                case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CREATIVEMetallurgicInfuserFactoryEvolved.get();
+                default ->
+                        throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+            };
+        } else {
+            return switch (mekanismMoreCapacity$getTier()) {
+                case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
+                case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
+                case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
+                case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+                default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+            };
+        }
     }
 
 }

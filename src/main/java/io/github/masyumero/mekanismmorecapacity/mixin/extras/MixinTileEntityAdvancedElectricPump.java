@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(value = TileEntityAdvancedElectricPump.class,remap = false)
 public class MixinTileEntityAdvancedElectricPump {
     @ModifyConstant(method = "getInitialFluidTanks",constant = @Constant(intValue = 10000000))
-    private int modifyChemicalTankCapacity(int i) {
+    private int modifyFluidTankCapacity(int i) {
         return MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AdvancedElectricPump.get();
     }
 }
