@@ -45,14 +45,9 @@ public abstract class MixinTileEntityMetallurgicInfuserFactory extends TileEntit
     }
 
     @Unique
-    private String mekanismMoreCapacity$getTier() {
-        return tier.getBaseTier().getSimpleName();
-    }
-
-    @Unique
     private long mekanismMoreCapacity$getConfigValue() {
         if(ModList.get().isLoaded("evolvedmekanism")) {
-            return switch (mekanismMoreCapacity$getTier()) {
+            return switch (this.tier.getBaseTier().getSimpleName()) {
                 case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
                 case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
                 case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
@@ -63,15 +58,14 @@ public abstract class MixinTileEntityMetallurgicInfuserFactory extends TileEntit
                 case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MULTIVERSALMetallurgicInfuserFactoryEvolved.get();
                 case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CREATIVEMetallurgicInfuserFactoryEvolved.get();
                 default ->
-                        throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+                        throw new IllegalStateException("Unexpected value: " + this.tier.getBaseTier().getSimpleName());
             };
         } else {
-            return switch (mekanismMoreCapacity$getTier()) {
-                case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-                case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-                case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-                case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
-                default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+            return switch (this.tier) {
+                case BASIC -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
+                case ADVANCED -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
+                case ELITE -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
+                case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
             };
         }
     }

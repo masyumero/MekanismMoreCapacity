@@ -56,18 +56,12 @@ public abstract class MixinTileEntityItemStackGasToItemStackAdvancedFactory exte
     }
 
     @Unique
-    private String mekanismMoreCapacity$getTier() {
-        return tier.getAdvanceTier().getSimpleName();
-    }
-
-    @Unique
     private long mekanismMoreCapacity$getConfigValue() {
-        return switch (mekanismMoreCapacity$getTier()) {
-            case "Absolute" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteFactories.get();
-            case "Supreme" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeFactories.get();
-            case "Cosmic" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicFactories.get();
-            case "Infinite" -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteFactories.get();
-            default -> throw new IllegalStateException("Unexpected value: " + mekanismMoreCapacity$getTier());
+        return switch (this.tier) {
+            case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteFactories.get();
+            case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeFactories.get();
+            case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicFactories.get();
+            case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteFactories.get();
         };
     }
 
