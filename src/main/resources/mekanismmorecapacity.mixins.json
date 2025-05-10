@@ -1,0 +1,36 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.masyumero.mekanismmorecapacity.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "MekanismMoreCapacity.refmap.json",
+  "mixins": [
+    "MixinSPSMultiblockData",
+    "extras.MixinTileEntityAdvancedElectricPump",
+    "extras.MixinTileEntityItemStackChemicalToItemStackAdvancedFactory",
+    "factory.MixinTileEntityItemStackChemicalToItemStackFactory",
+    "machine.MixinTileEntityAntiprotonicNucleosynthesizer",
+    "machine.MixinTileEntityChemicalCrystallizer",
+    "machine.MixinTileEntityChemicalDissolutionChamber",
+    "machine.MixinTileEntityChemicalInfuser",
+    "machine.MixinTileEntityChemicalOxidizer",
+    "machine.MixinTileEntityChemicalWasher",
+    "machine.MixinTileEntityElectrolyticSeparator",
+    "machine.MixinTileEntityIsotopicCentrifuge",
+    "machine.MixinTileEntityMetallurgicInfuser",
+    "machine.MixinTileEntityNutritionalLiquifier",
+    "machine.MixinTileEntityPressurizedReactionChamber",
+    "machine.MixinTileEntityRotaryCondensentrator",
+    "machine.MixinTileEntitySolarNeutronActivator",
+    "prefab.MixinTileEntityAdvancedElectricMachine",
+    "science.MixinTileEntityAdsorptionSeparator",
+    "science.MixinTileEntityAirCompressor",
+    "science.MixinTileEntityRadiationIrradiator",
+    "science.MixinTileEntitySeawaterPump"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
