@@ -159,8 +159,9 @@ dependencies {
     compileOnly "mekanism:Mekanism:${mekanism_version}"
     compileOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
     compileOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
-    implementation fg.deobf("curse.maven:mekanism-science-1103224:6421777")
+    compileOnly fg.deobf("curse.maven:mekanism-science-1103224:6421777")
 
+    runtimeOnly fg.deobf("curse.maven:mekanism-science-1103224:6421777")
     //runtimeOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
     runtimeOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following

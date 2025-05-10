@@ -13,7 +13,9 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue ChemicalCrystallizer;
     public final CachedLongValue ChemicalDissolutionChamberInput;
     public final CachedLongValue ChemicalDissolutionChamberOutput;
-    public final CachedLongValue ChemicalInfuser;
+    public final CachedLongValue ChemicalInfuserleft;
+    public final CachedLongValue ChemicalInfuserright;
+    public final CachedLongValue ChemicalInfusercenter;
     public final CachedLongValue ChemicalOxidizer;
     public final CachedLongValue ChemicalWasherSlurry;
     public final CachedIntValue ChemicalWasherFluid;
@@ -37,6 +39,7 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue AdvancedFactories;
     public final CachedLongValue EliteFactories;
     public final CachedLongValue UltimateFactories;
+    public final CachedIntValue ElectricPump;
 
     public MMCMekMachineConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -49,7 +52,9 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         ChemicalDissolutionChamberInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         ChemicalDissolutionChamberOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalInfuser");
-        ChemicalInfuser = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfuserleft = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("leftChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfuserright = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("rightChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfusercenter = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("centerChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalOxidizer");
         ChemicalOxidizer = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalWasher");
@@ -76,6 +81,8 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         SolarNeutronActivator = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("sps");
         sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 200, Vanilla: 2").defineInRange("inputTankCapacity", 200, 1,1000000000L));
+        builder.pop().push("ElectricPump");
+        ElectricPump = CachedIntValue.wrap(this,builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("fluidTankCapacity",1000000,1,Integer.MAX_VALUE));
         builder.pop().push("factories").push("InfusingFactory");
         BasicMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 300000, Vanilla: 3000").defineInRange("basicChemicalTankCapacity",300000,1,Long.MAX_VALUE));
         AdvancedMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 500000, Vanilla: 5000").defineInRange("advancedChemicalTankCapacity",500000,1,Long.MAX_VALUE));
