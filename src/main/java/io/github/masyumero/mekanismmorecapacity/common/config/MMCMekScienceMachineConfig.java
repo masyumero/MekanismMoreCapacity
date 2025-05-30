@@ -14,7 +14,7 @@ public class MMCMekScienceMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue RadiationIrradiatorOutput;
     public final CachedLongValue ChemicalDemolition;
     public final CachedLongValue AirCompressor;
-    public final CachedLongValue AdsorptionSeparatorInput;
+    public final CachedIntValue AdsorptionSeparatorInput;
     public final CachedLongValue AdsorptionSeparatorOutput;
 
     public MMCMekScienceMachineConfig() {
@@ -30,14 +30,14 @@ public class MMCMekScienceMachineConfig extends BaseMekanismConfig {
         builder.pop().push("AirCompressor");
         AirCompressor = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
         builder.pop().push("AdsorptionSeparator");
-        AdsorptionSeparatorInput = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
+        AdsorptionSeparatorInput = CachedIntValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputFluidTankCapacity", 1000000, 1, Integer.MAX_VALUE));
         AdsorptionSeparatorOutput = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
         configSpec = builder.build();
     }
 
     @Override
     public String getFileName() {
-        return "MMCMekScienceMachine";
+        return "MMCMekElementsMachine";
     }
 
     @Override
