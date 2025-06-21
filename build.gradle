@@ -108,6 +108,7 @@ dependencies {
     compileOnly "mekanism:Mekanism:${mekanism_version}"
     compileOnly "curse.maven:mekanism-elements-1103224:6393948"
     implementation "curse.maven:mekanism-extras-1026040:6498463"
+    implementation "curse.maven:mekanism-more-machine-1275257:6626668"
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly "mekanism:Mekanism:${mekanism_version}"// core
     runtimeOnly "mekanism:Mekanism:${mekanism_version}:additions"// Mekanism: Additions
