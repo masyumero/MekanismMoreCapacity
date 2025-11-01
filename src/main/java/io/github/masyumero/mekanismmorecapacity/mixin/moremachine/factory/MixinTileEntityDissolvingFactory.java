@@ -35,10 +35,10 @@ public abstract class MixinTileEntityDissolvingFactory extends TileEntityItemToC
 
     private CachedLongValue getConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONDIG.BasicDissolvingFactory;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedDissolvingFactory;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONDIG.EliteDissolvingFactory;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateDissolvingFactory;
+            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicDissolvingFactory;
+            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedDissolvingFactory;
+            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteDissolvingFactory;
+            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateDissolvingFactory;
         };
     }
 }

@@ -35,10 +35,10 @@ public abstract class MixinTileEntityReplicatingFactory extends MMTileEntityItem
 
     private CachedLongValue getInputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONDIG.BasicReplicatorFactory;
-            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedReplicatorFactory;
-            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONDIG.EliteReplicatorFactory;
-            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateReplicatorFactory;
+            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONFIG.BasicReplicatorFactory;
+            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedReplicatorFactory;
+            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONFIG.EliteReplicatorFactory;
+            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateReplicatorFactory;
         };
     }
 }

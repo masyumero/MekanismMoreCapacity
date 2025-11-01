@@ -36,10 +36,10 @@ public abstract class MixinTileEntityPlantingFactory extends MMTileEntityFactory
 
     private CachedLongValue getInputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONDIG.BasicPlantingStationFactory;
-            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedPlantingStationFactory;
-            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONDIG.ElitePlantingStationFactory;
-            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONDIG.UltimatePlantingStationFactory;
+            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONFIG.BasicPlantingStationFactory;
+            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedPlantingStationFactory;
+            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONFIG.ElitePlantingStationFactory;
+            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONFIG.UltimatePlantingStationFactory;
         };
     }
 }

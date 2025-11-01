@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public abstract class MixinTileEntityPlantingStation {
     @ModifyArg(method = "getInitialChemicalTanks",at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;createModern(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long inputModifyArg(long capacity) {
-        return MMCConfig.MEK_MM_MACHINE_CONDIG.PlantingStation.get();
+        return MMCConfig.MEK_MM_MACHINE_CONFIG.PlantingStation.get();
     }
 }

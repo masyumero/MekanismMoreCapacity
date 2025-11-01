@@ -32,10 +32,10 @@ public abstract class MixinTileEntityChemicalToChemicalAdvancedFactory<RECIPE ex
 
     private CachedLongValue getInputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONDIG.BasicChemicalToChemicalFactoryinputL;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedChemicalToChemicalFactoryinputL;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONDIG.EliteChemicalToChemicalFactoryinputL;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateChemicalToChemicalFactoryinputL;
+            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputL;
+            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputL;
+            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputL;
+            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputL;
         };
     }
 
@@ -46,10 +46,10 @@ public abstract class MixinTileEntityChemicalToChemicalAdvancedFactory<RECIPE ex
 
     private CachedLongValue getOutputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONDIG.BasicChemicalToChemicalFactoryoutput;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedChemicalToChemicalFactoryoutput;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONDIG.EliteChemicalToChemicalFactoryoutput;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateChemicalToChemicalFactoryoutput;
+            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryoutput;
+            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryoutput;
+            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryoutput;
+            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryoutput;
         };
     }
 }

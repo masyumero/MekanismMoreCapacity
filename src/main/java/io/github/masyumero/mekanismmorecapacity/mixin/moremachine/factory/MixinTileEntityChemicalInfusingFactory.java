@@ -34,10 +34,10 @@ public abstract class MixinTileEntityChemicalInfusingFactory extends TileEntityC
 
     private CachedLongValue getConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONDIG.BasicChemicalToChemicalFactoryinputR;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedChemicalToChemicalFactoryinputR;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONDIG.EliteChemicalToChemicalFactoryinputR;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateChemicalToChemicalFactoryinputR;
+            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputR;
+            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputR;
+            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputR;
+            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputR;
         };
     }
 }

@@ -32,10 +32,10 @@ public abstract class MixinTileEntityChemicalToItemAdvancedFactory<RECIPE extend
 
     private CachedLongValue getConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONDIG.BasicCrystallizingFactory;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedCrystallizingFactory;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONDIG.EliteCrystallizingFactory;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONDIG.UltimateCrystallizingFactory;
+            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicCrystallizingFactory;
+            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedCrystallizingFactory;
+            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteCrystallizingFactory;
+            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateCrystallizingFactory;
         };
     }
 }

@@ -36,10 +36,10 @@ public abstract class MixinTileEntityPressurizedReactingFactory extends TileEnti
 
     private CachedLongValue getInputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONDIG.BasicPressurizedReactingFactoryinput;
-            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedPressurizedReactingFactoryinput;
-            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONDIG.ElitePressurizedReactingFactoryinput;
-            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONDIG.UltimatePressurizedReactingFactoryinput;
+            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONFIG.BasicPressurizedReactingFactoryinput;
+            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedPressurizedReactingFactoryinput;
+            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONFIG.ElitePressurizedReactingFactoryinput;
+            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONFIG.UltimatePressurizedReactingFactoryinput;
         };
     }
 
@@ -50,10 +50,10 @@ public abstract class MixinTileEntityPressurizedReactingFactory extends TileEnti
 
     private CachedLongValue getOutputConfigValue(FactoryTier tier) {
         return switch (tier) {
-            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONDIG.BasicPressurizedReactingFactoryoutput;
-            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONDIG.AdvancedPressurizedReactingFactoryoutput;
-            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONDIG.ElitePressurizedReactingFactoryoutput;
-            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONDIG.UltimatePressurizedReactingFactoryoutput;
+            case BASIC ->       MMCConfig.MEK_MM_MACHINE_CONFIG.BasicPressurizedReactingFactoryoutput;
+            case ADVANCED ->    MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedPressurizedReactingFactoryoutput;
+            case ELITE ->       MMCConfig.MEK_MM_MACHINE_CONFIG.ElitePressurizedReactingFactoryoutput;
+            case ULTIMATE ->    MMCConfig.MEK_MM_MACHINE_CONFIG.UltimatePressurizedReactingFactoryoutput;
         };
     }
 }
