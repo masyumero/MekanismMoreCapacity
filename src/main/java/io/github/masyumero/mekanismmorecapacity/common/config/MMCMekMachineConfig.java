@@ -85,10 +85,10 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         EliteMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 700000, Vanilla: 7000").defineInRange("eliteChemicalTankCapacity",700000,1,Long.MAX_VALUE));
         UltimateMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 900000, Vanilla: 9000").defineInRange("ultimateChemicalTankCapacity",900000,1,Long.MAX_VALUE));
         builder.pop().push("CompressingFactory, injectingFactory, purifyingFactory");
-        BasicFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalTankCapacity",63000,1,Long.MAX_VALUE));
-        AdvancedFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalTankCapacity",105000,1,Long.MAX_VALUE));
-        EliteFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalTankCapacity",147000,1,Long.MAX_VALUE));
-        UltimateFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalTankCapacity",189000,1,Long.MAX_VALUE));
+        BasicFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalInputTankCapacity",63000,1,Long.MAX_VALUE));
+        AdvancedFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalInputTankCapacity",105000,1,Long.MAX_VALUE));
+        EliteFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalInputTankCapacity",147000,1,Long.MAX_VALUE));
+        UltimateFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalInputTankCapacity",189000,1,Long.MAX_VALUE));
         builder.pop().pop();
         configSpec = builder.build();
     }

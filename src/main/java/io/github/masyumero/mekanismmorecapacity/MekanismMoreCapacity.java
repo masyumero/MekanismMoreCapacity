@@ -12,6 +12,7 @@ public class MekanismMoreCapacity {
     public static final String MODID = "mekanismmorecapacity";
     public static final String MODNAME = "MekanismMoreCapacity";
 
+    @SuppressWarnings("removal")
     public MekanismMoreCapacity() {
         MMCConfig.registerConfigs(ModLoadingContext.get());
     }

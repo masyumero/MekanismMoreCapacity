@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemAdvancedFactory;
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityMetallurgicInfuserAdvancedFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemExtraFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityMetallurgicInfuserExtraFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -26,14 +26,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(value = TileEntityMetallurgicInfuserAdvancedFactory.class,remap = false)
-public abstract class MixinTileEntityMetallurgicInfuserAdvancedFactory extends TileEntityItemToItemAdvancedFactory<MetallurgicInfuserRecipe> implements IHasDumpButton,
+@Mixin(value = TileEntityMetallurgicInfuserExtraFactory.class,remap = false)
+public abstract class MixinTileEntityMetallurgicInfuserExtraFactory extends TileEntityItemToItemExtraFactory<MetallurgicInfuserRecipe> implements IHasDumpButton,
         IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<InfuseType, InfusionStack, MetallurgicInfuserRecipe> {
 
     @Shadow
-    public IInfusionTank infusionTank;
+    IInfusionTank infusionTank;
 
-    protected MixinTileEntityMetallurgicInfuserAdvancedFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
+    protected MixinTileEntityMetallurgicInfuserExtraFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
     }
 

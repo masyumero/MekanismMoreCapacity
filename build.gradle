@@ -124,7 +124,7 @@ minecraft {
 
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
-
+    debug.export = true
     config "${mod_id}.mixins.json"
 }
 
@@ -150,19 +150,13 @@ repositories {
 }
 
 dependencies {
-    // Specify the version of Minecraft to use.
-    // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
-    // The "userdev" classifier will be requested and setup by ForgeGradle.
-    // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
-    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly "mekanism:Mekanism:${mekanism_version}"
-    compileOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
-    compileOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
 
+    implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7117024")
     implementation fg.deobf("curse.maven:mekanism-elements-1103224:6537553")
-    //runtimeOnly fg.deobf("curse.maven:evolved-mekanism-1230085:6440797")
-    runtimeOnly fg.deobf("curse.maven:mekanism-extras-1026040:6424885")
+    implementation fg.deobf("curse.maven:mekanism-extras-1026040:6936409")
+    implementation fg.deobf("curse.maven:mekanism-more-machine-1275257:7156475")
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
@@ -172,20 +166,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:emi-580555:5872526")
     runtimeOnly fg.deobf("curse.maven:jade-324717:5672013")
     runtimeOnly fg.deobf("curse.maven:configured-457570:5180900")
-    // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
-
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    runtimeOnly fg.deobf("curse.maven:iglee-library-541199:6987117")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

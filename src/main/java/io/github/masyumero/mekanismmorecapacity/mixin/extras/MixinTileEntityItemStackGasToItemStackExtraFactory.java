@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemStackGasToItemStackAdvancedFactory;
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemAdvancedFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemStackGasToItemStackExtraFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemExtraFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.ChemicalTankBuilder;
@@ -30,11 +30,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(value = TileEntityItemStackGasToItemStackAdvancedFactory.class,remap = false)
-public abstract class MixinTileEntityItemStackGasToItemStackAdvancedFactory extends TileEntityItemToItemAdvancedFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
+@Mixin(value = TileEntityItemStackGasToItemStackExtraFactory.class,remap = false)
+public abstract class MixinTileEntityItemStackGasToItemStackExtraFactory extends TileEntityItemToItemExtraFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
         IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<Gas, GasStack, ItemStackGasToItemStackRecipe>, IRecipeLookupHandler.ConstantUsageRecipeLookupHandler {
 
-    protected MixinTileEntityItemStackGasToItemStackAdvancedFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
+    protected MixinTileEntityItemStackGasToItemStackExtraFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
     }
 
@@ -65,6 +65,7 @@ public abstract class MixinTileEntityItemStackGasToItemStackAdvancedFactory exte
         };
     }
 
+    @Shadow
     private boolean allowExtractingChemical() {
         return Attribute.get(blockProvider, AttributeFactoryType.class).getFactoryType() == FactoryType.COMPRESSING;
     }
