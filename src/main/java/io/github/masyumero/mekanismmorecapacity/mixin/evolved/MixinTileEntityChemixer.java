@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinTileEntityChemixer {
     @ModifyConstant(method = "getInitialGasTanks", constant = @Constant(longValue = 10000L))
     private long modifyChemicalTankCapacity(long c) {
-        return MMCConfig.EVO_MEK_MACHINE_CONFIG.Chemixer.get();
+        return MMCConfig.EVO_MEK_MACHINE_CONFIG.CHEMIXER.get();
     }
 }

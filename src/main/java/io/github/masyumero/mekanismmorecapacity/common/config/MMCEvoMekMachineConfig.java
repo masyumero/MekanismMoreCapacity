@@ -1,6 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.common.config;
 
 import mekanism.common.config.BaseMekanismConfig;
+import mekanism.common.config.value.CachedIntValue;
 import mekanism.common.config.value.CachedLongValue;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
@@ -18,7 +19,10 @@ public class MMCEvoMekMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue DENSEMetallurgicInfuserFactoryEvolved;
     public final CachedLongValue MULTIVERSALMetallurgicInfuserFactoryEvolved;
     public final CachedLongValue CREATIVEMetallurgicInfuserFactoryEvolved;
-    public final CachedLongValue Chemixer;
+    public final CachedLongValue CHEMIXER;
+    public final CachedIntValue THERMALIZER;
+    public final CachedIntValue SOLIDIFIERCOOLANTTANK;
+    public final CachedIntValue SOLIDIFIERMOLTENMATERIAL;
 
     public MMCEvoMekMachineConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -36,7 +40,12 @@ public class MMCEvoMekMachineConfig extends BaseMekanismConfig {
         MULTIVERSALMetallurgicInfuserFactoryEvolved = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1700000, Vanilla: 17000").defineInRange("multiversalChemicalTankCapacity", 1700000, 1, Long.MAX_VALUE));
         CREATIVEMetallurgicInfuserFactoryEvolved = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1900000, Vanilla: 19000").defineInRange("CreativeChemicalTankCapacity", 1900000, 1, Long.MAX_VALUE));
         builder.pop().push("Chemixer");
-        Chemixer = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
+        CHEMIXER = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
+        builder.pop().push("Thermalizer");
+        THERMALIZER = CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1600000, Vanilla: 16000").defineInRange("fluidTankCapacity", 1600000, 1, Integer.MAX_VALUE));
+        builder.pop().push("Solidifier");
+        SOLIDIFIERCOOLANTTANK = CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("fluidTankCapacity", 1000000, 1, Integer.MAX_VALUE));
+        SOLIDIFIERMOLTENMATERIAL =  CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("extraFluidTankCapacity", 1000000, 1, Integer.MAX_VALUE));
         builder.pop();
         configSpec = builder.build();
     }
