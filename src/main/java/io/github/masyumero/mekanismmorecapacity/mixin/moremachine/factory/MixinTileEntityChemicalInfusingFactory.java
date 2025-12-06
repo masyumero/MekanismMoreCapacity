@@ -1,18 +1,19 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
 import com.jerry.mekaf.common.tile.factory.TileEntityChemicalInfusingFactory;
-import com.jerry.mekaf.common.tile.factory.TileEntityChemicalToChemicalAdvancedFactory;
+import com.jerry.mekaf.common.tile.factory.TileEntityChemicalToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
+import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
 import mekanism.api.recipes.ChemicalChemicalToChemicalRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.common.config.value.CachedLongValue;
 import mekanism.common.recipe.lookup.IEitherSideRecipeLookupHandler;
-import mekanism.common.tier.FactoryTier;
 import mekanism.common.tile.interfaces.IHasDumpButton;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @Mixin(value = TileEntityChemicalInfusingFactory.class,remap = false)
-public abstract class MixinTileEntityChemicalInfusingFactory extends TileEntityChemicalToChemicalAdvancedFactory<ChemicalChemicalToChemicalRecipe> implements IHasDumpButton, IEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<ChemicalChemicalToChemicalRecipe> {
+public abstract class MixinTileEntityChemicalInfusingFactory extends TileEntityChemicalToChemicalFactory<ChemicalChemicalToChemicalRecipe> implements IHasDumpButton, IEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<ChemicalChemicalToChemicalRecipe> {
 
     protected MixinTileEntityChemicalInfusingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
@@ -29,15 +30,30 @@ public abstract class MixinTileEntityChemicalInfusingFactory extends TileEntityC
 
     @ModifyArg(method = "addTanks",at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;inputModern(JLjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long inputModifyArg(long capacity) {
-        return getConfigValue(this.tier).get();
+        return getConfigValue().get();
     }
 
-    private CachedLongValue getConfigValue(FactoryTier tier) {
-        return switch (tier) {
-            case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputR;
-            case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputR;
-            case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputR;
-            case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputR;
-        };
+    private CachedLongValue getConfigValue() {
+        if (ModList.get().isLoaded("evolvedmekanism")) {
+            return switch (TierUtil.getTierName(tier)) {
+                case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputR;
+                case "Advanced" ->      MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputR;
+                case "Elite" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputR;
+                case "Ultimate" ->      MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputR;
+                case "Overclocked" ->   MMCConfig.MEK_MM_MACHINE_CONFIG.OverclockedChemicalToChemicalFactoryinputR;
+                case "Quantum" ->       MMCConfig.MEK_MM_MACHINE_CONFIG.QuantumChemicalToChemicalFactoryinputR;
+                case "Dense" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.DenseChemicalToChemicalFactoryinputR;
+                case "Multiversal" ->   MMCConfig.MEK_MM_MACHINE_CONFIG.MultiversalChemicalToChemicalFactoryinputR;
+                case "Creative" ->      MMCConfig.MEK_MM_MACHINE_CONFIG.CreativeChemicalToChemicalFactoryinputR;
+                default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
+            };
+        } else {
+            return switch (tier) {
+                case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputR;
+                case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputR;
+                case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputR;
+                case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputR;
+            };
+        }
     }
 }

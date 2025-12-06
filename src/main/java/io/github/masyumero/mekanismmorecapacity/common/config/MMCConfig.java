@@ -18,6 +18,7 @@ public class MMCConfig {
     public static final MMCMekExtrasMachineConfig MEK_EXTRAS_MACHINE_CONFIG = new MMCMekExtrasMachineConfig();
     public static final MMCMekScienceMachineConfig MEK_SCIENCE_MACHINE_CONFIG = new MMCMekScienceMachineConfig();
     public static final MMCMekMMMachineConfig MEK_MM_MACHINE_CONFIG = new MMCMekMMMachineConfig();
+    public static final MMCEvoMekMachineConfig EVO_MEK_MACHINE_CONFIG = new MMCEvoMekMachineConfig();
 
     public static void registerConfigs(ModContainer modContainer) {
         MMCConfigHelper.registerConfig(KNOWN_CONFIGS, modContainer, MEK_MACHINE_CONFIG);
@@ -29,6 +30,9 @@ public class MMCConfig {
         }
         if(ModList.get().isLoaded("mekmm")) {
             MMCConfigHelper.registerConfig(KNOWN_CONFIGS, modContainer, MEK_MM_MACHINE_CONFIG);
+        }
+        if(ModList.get().isLoaded("evolvedmekanism")) {
+            MMCConfigHelper.registerConfig(KNOWN_CONFIGS, modContainer, EVO_MEK_MACHINE_CONFIG);
         }
     }
 }

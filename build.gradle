@@ -107,8 +107,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     compileOnly "mekanism:Mekanism:${mekanism_version}"
     compileOnly "curse.maven:mekanism-elements-1103224:6393948"
-    implementation "curse.maven:mekanism-extras-1026040:6498463"
-    implementation "curse.maven:mekanism-more-machine-1275257:6626668"
+    implementation "curse.maven:mekanism-extras-1026040:7135934"
+    implementation "curse.maven:mekanism-more-machine-1275257:7277351"
+    implementation "curse.maven:evolved-mekanism-1230085:7161187"
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly "mekanism:Mekanism:${mekanism_version}"// core
     runtimeOnly "mekanism:Mekanism:${mekanism_version}:additions"// Mekanism: Additions
@@ -117,6 +118,7 @@ dependencies {
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     runtimeOnly "curse.maven:jade-324717:6291517"
     runtimeOnly "curse.maven:configured-457570:5873783"
+    runtimeOnly "curse.maven:iglee-library-541199:7000755"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

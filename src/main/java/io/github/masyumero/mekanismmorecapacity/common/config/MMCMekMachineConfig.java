@@ -38,10 +38,18 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue AdvancedMetallurgicInfuserFactory;
     public final CachedLongValue EliteMetallurgicInfuserFactory;
     public final CachedLongValue UltimateMetallurgicInfuserFactory;
-    public final CachedLongValue BasicFactories;
-    public final CachedLongValue AdvancedFactories;
-    public final CachedLongValue EliteFactories;
-    public final CachedLongValue UltimateFactories;
+    public final CachedLongValue BasicCompressing;
+    public final CachedLongValue AdvancedCompressing;
+    public final CachedLongValue EliteCompressing;
+    public final CachedLongValue UltimateCompressing;
+    public final CachedLongValue BasicInjecting;
+    public final CachedLongValue AdvancedInjecting;
+    public final CachedLongValue EliteInjecting;
+    public final CachedLongValue UltimateInjecting;
+    public final CachedLongValue BasicPurifying;
+    public final CachedLongValue AdvancedPurifying;
+    public final CachedLongValue ElitePurifying;
+    public final CachedLongValue UltimatePurifying;
 
     public MMCMekMachineConfig() {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -91,11 +99,21 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         AdvancedMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 500000, Vanilla: 5000").defineInRange("advancedChemicalTankCapacity",500000,1,Long.MAX_VALUE));
         EliteMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 700000, Vanilla: 7000").defineInRange("eliteChemicalTankCapacity",700000,1,Long.MAX_VALUE));
         UltimateMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 900000, Vanilla: 9000").defineInRange("ultimateChemicalTankCapacity",900000,1,Long.MAX_VALUE));
-        builder.pop().push("CompressingFactory, injectingFactory, purifyingFactory");
-        BasicFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalTankCapacity",63000,1,Long.MAX_VALUE));
-        AdvancedFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalTankCapacity",105000,1,Long.MAX_VALUE));
-        EliteFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalTankCapacity",147000,1,Long.MAX_VALUE));
-        UltimateFactories = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalTankCapacity",189000,1,Long.MAX_VALUE));
+        builder.pop().push("CompressingFactory");
+        BasicCompressing = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalInputTankCapacity",63000,1,Long.MAX_VALUE));
+        AdvancedCompressing = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalInputTankCapacity",105000,1,Long.MAX_VALUE));
+        EliteCompressing = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalInputTankCapacity",147000,1,Long.MAX_VALUE));
+        UltimateCompressing = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalInputTankCapacity",189000,1,Long.MAX_VALUE));
+        builder.pop().push("InjectingFactory");
+        BasicInjecting = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalInputTankCapacity",63000,1,Long.MAX_VALUE));
+        AdvancedInjecting = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalInputTankCapacity",105000,1,Long.MAX_VALUE));
+        EliteInjecting = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalInputTankCapacity",147000,1,Long.MAX_VALUE));
+        UltimateInjecting = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalInputTankCapacity",189000,1,Long.MAX_VALUE));
+        builder.pop().push("PurifyingFactory");
+        BasicPurifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 63000, Vanilla: 630").defineInRange("basicChemicalInputTankCapacity",63000,1,Long.MAX_VALUE));
+        AdvancedPurifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 105000, Vanilla: 1050").defineInRange("advancedChemicalInputTankCapacity",105000,1,Long.MAX_VALUE));
+        ElitePurifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 147000 , Vanilla: 1470").defineInRange("eliteChemicalInputTankCapacity",147000,1,Long.MAX_VALUE));
+        UltimatePurifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 189000 , Vanilla: 1890").defineInRange("ultimateChemicalInputTankCapacity",189000,1,Long.MAX_VALUE));
         builder.pop().pop();
         configSpec = builder.build();
     }

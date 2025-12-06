@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
-import com.jerry.mekextras.common.tile.factory.TileEntityItemStackChemicalToItemStackAdvancedFactory;
-import com.jerry.mekextras.common.tile.factory.TileEntityItemToItemAdvancedFactory;
+import com.jerry.mekextras.common.tile.factory.TileEntityItemStackChemicalToItemStackExtraFactory;
+import com.jerry.mekextras.common.tile.factory.TileEntityItemToItemExtraFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.IContentsListener;
 import mekanism.api.chemical.BasicChemicalTank;
@@ -29,8 +29,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(value = TileEntityItemStackChemicalToItemStackAdvancedFactory.class,remap = false)
-public abstract class MixinTileEntityItemStackChemicalToItemStackAdvancedFactory extends TileEntityItemToItemAdvancedFactory<ItemStackChemicalToItemStackRecipe> implements IHasDumpButton, IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<ItemStackChemicalToItemStackRecipe>, IRecipeLookupHandler.ConstantUsageRecipeLookupHandler {
+@Mixin(value = TileEntityItemStackChemicalToItemStackExtraFactory.class,remap = false)
+public abstract class MixinTileEntityItemStackChemicalToItemStackAdvancedFactory extends TileEntityItemToItemExtraFactory<ItemStackChemicalToItemStackRecipe> implements IHasDumpButton, IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<ItemStackChemicalToItemStackRecipe>, IRecipeLookupHandler.ConstantUsageRecipeLookupHandler {
 
     @Shadow
     public IChemicalTank chemicalTank;
