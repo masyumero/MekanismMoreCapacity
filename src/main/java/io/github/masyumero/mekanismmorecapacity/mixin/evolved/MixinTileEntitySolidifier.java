@@ -25,11 +25,11 @@ public abstract class MixinTileEntitySolidifier extends TileEntityProgressMachin
 
     @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 10000, ordinal = 0))
     private int inputFluidTankModify(int constant) {
-        return MMCConfig.EVO_MEK_MACHINE_CONFIG.SOLIDIFIERMOLTENMATERIAL.get();
+        return MMCConfig.EVO_MEK_MACHINE_CONFIG.SolidifierMoltenMaterial.get();
     }
 
     @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 10000, ordinal = 1))
     private int inputFluidExtraTankModify(int constant) {
-        return MMCConfig.EVO_MEK_MACHINE_CONFIG.SOLIDIFIERCOOLANTTANK.get();
+        return MMCConfig.EVO_MEK_MACHINE_CONFIG.SolidifierCoolantTank.get();
     }
 }

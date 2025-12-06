@@ -37,24 +37,24 @@ public abstract class MixinTileEntityMetallurgicInfuserFactory extends TileEntit
     private long mekanismMoreCapacity$getConfigValue() {
         if(ModList.get().isLoaded("evolvedmekanism")) {
             return switch (TierUtil.getTierName(tier)) {
-                case "Basic" ->         MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-                case "Advanced" ->      MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-                case "Elite" ->         MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-                case "Ultimate" ->      MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
-                case "Overclocked" ->   MMCConfig.EVO_MEK_MACHINE_CONFIG.OVERCLOCKEDMetallurgicInfuserFactoryEvolved.get();
-                case "Quantum" ->       MMCConfig.EVO_MEK_MACHINE_CONFIG.QUANTUMFMetallurgicInfuserFactoryEvolved.get();
-                case "Dense" ->         MMCConfig.EVO_MEK_MACHINE_CONFIG.DENSEMetallurgicInfuserFactoryEvolved.get();
-                case "Multiversal" ->   MMCConfig.EVO_MEK_MACHINE_CONFIG.MULTIVERSALMetallurgicInfuserFactoryEvolved.get();
-                case "Creative" ->      MMCConfig.EVO_MEK_MACHINE_CONFIG.CREATIVEMetallurgicInfuserFactoryEvolved.get();
+                case "Basic" ->         MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory.get();
+                case "Advanced" ->      MMCConfig.MEK_MACHINE_CONFIG.AdvancedMetallurgicInfuserFactory.get();
+                case "Elite" ->         MMCConfig.MEK_MACHINE_CONFIG.EliteMetallurgicInfuserFactory.get();
+                case "Ultimate" ->      MMCConfig.MEK_MACHINE_CONFIG.UltimateMetallurgicInfuserFactory.get();
+                case "Overclocked" ->   MMCConfig.EVO_MEK_MACHINE_CONFIG.OverclockedMetallurgicInfuserFactoryEvolved.get();
+                case "Quantum" ->       MMCConfig.EVO_MEK_MACHINE_CONFIG.QuantumMetallurgicInfuserFactoryEvolved.get();
+                case "Dense" ->         MMCConfig.EVO_MEK_MACHINE_CONFIG.DenseMetallurgicInfuserFactoryEvolved.get();
+                case "Multiversal" ->   MMCConfig.EVO_MEK_MACHINE_CONFIG.MultiversalMetallurgicInfuserFactoryEvolved.get();
+                case "Creative" ->      MMCConfig.EVO_MEK_MACHINE_CONFIG.CreativeMetallurgicInfuserFactoryEvolved.get();
                 default ->
                         throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
             };
         } else {
             return switch (this.tier) {
-                case BASIC ->       MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-                case ADVANCED ->    MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-                case ELITE ->       MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-                case ULTIMATE ->    MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
+                case BASIC ->       MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory.get();
+                case ADVANCED ->    MMCConfig.MEK_MACHINE_CONFIG.AdvancedMetallurgicInfuserFactory.get();
+                case ELITE ->       MMCConfig.MEK_MACHINE_CONFIG.EliteMetallurgicInfuserFactory.get();
+                case ULTIMATE ->    MMCConfig.MEK_MACHINE_CONFIG.UltimateMetallurgicInfuserFactory.get();
             };
         }
     }

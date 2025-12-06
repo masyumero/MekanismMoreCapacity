@@ -7,6 +7,8 @@ import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.config.value.CachedLongValue;
+import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;
 import mekanism.common.tile.factory.TileEntityItemStackGasToItemStackFactory;
@@ -33,39 +35,104 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
     
     @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;create(JLjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long inputModifyArg_0(long capacity) {
-        return mekanismMoreCapacity$getConfigValue();
+        return getConfigValue().get();
     }
 
     @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;input(JLjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long inputModifyArg_1(long capacity) {
-        return mekanismMoreCapacity$getConfigValue();
+        return getConfigValue().get();
     }
 
-
-
     @Unique
-    private long mekanismMoreCapacity$getConfigValue() {
-        if(ModList.get().isLoaded("evolvedmekanism")) {
-            return switch (TierUtil.getTierName(tier)) {
-                case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-                case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-                case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-                case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
-                case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.OVERCLOCKEDFactories.get();
-                case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.QUANTUMFactories.get();
-                case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.DENSEFactories.get();
-                case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MULTIVERSALFactories.get();
-                case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CREATIVEFactories.get();
-                default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
-            };
+    private CachedLongValue getConfigValue() {
+        if (getFactoryType() == FactoryType.COMPRESSING) {
+            if (ModList.get().isLoaded("evolvedmekanism")) {
+                return switch (TierUtil.getTierName(tier)) {
+                    case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicCompressing;
+                    case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedCompressing;
+                    case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteCompressing;
+                    case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateCompressing;
+                    case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.OverclockedCompressing;
+                    case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.QuantumCompressing;
+                    case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.DenseCompressing;
+                    case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MultiversalCompressing;
+                    case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CreativeCompressing;
+                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
+                };
+            } else {
+                return switch (tier) {
+                    case BASIC -> MMCConfig.MEK_MACHINE_CONFIG.BasicCompressing;
+                    case ADVANCED -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedCompressing;
+                    case ELITE -> MMCConfig.MEK_MACHINE_CONFIG.EliteCompressing;
+                    case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateCompressing;
+                };
+            }
+        } else if(getFactoryType() == FactoryType.INJECTING) {
+            if (ModList.get().isLoaded("evolvedmekanism")) {
+                return switch (TierUtil.getTierName(tier)) {
+                    case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicInjecting;
+                    case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedInjecting;
+                    case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteInjecting;
+                    case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateInjecting;
+                    case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Overclockedinjecting;
+                    case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Quantuminjecting;
+                    case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Denseinjecting;
+                    case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Multiversalinjecting;
+                    case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Creativeinjecting;
+                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
+                };
+            } else {
+                return switch (tier) {
+                    case BASIC -> MMCConfig.MEK_MACHINE_CONFIG.BasicInjecting;
+                    case ADVANCED -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedInjecting;
+                    case ELITE -> MMCConfig.MEK_MACHINE_CONFIG.EliteInjecting;
+                    case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateInjecting;
+                };
+            }
+        } else if(getFactoryType() == FactoryType.INFUSING) {
+            if (ModList.get().isLoaded("evolvedmekanism")) {
+                return switch (TierUtil.getTierName(tier)) {
+                    case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory;
+                    case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedMetallurgicInfuserFactory;
+                    case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteMetallurgicInfuserFactory;
+                    case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateMetallurgicInfuserFactory;
+                    case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.OverclockedMetallurgicInfuserFactoryEvolved;
+                    case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.QuantumMetallurgicInfuserFactoryEvolved;
+                    case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.DenseMetallurgicInfuserFactoryEvolved;
+                    case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.MultiversalMetallurgicInfuserFactoryEvolved;
+                    case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.CreativeMetallurgicInfuserFactoryEvolved;
+                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
+                };
+            } else {
+                return switch (tier) {
+                    case BASIC -> MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory;
+                    case ADVANCED -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedMetallurgicInfuserFactory;
+                    case ELITE -> MMCConfig.MEK_MACHINE_CONFIG.EliteMetallurgicInfuserFactory;
+                    case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateMetallurgicInfuserFactory;
+                };
+            }
         } else {
-            return switch (TierUtil.getTierName(tier)) {
-                case  "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicFactories.get();
-                case  "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedFactories.get();
-                case  "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.EliteFactories.get();
-                case  "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateFactories.get();
-                default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
-            };
+            if (ModList.get().isLoaded("evolvedmekanism")) {
+                return switch (TierUtil.getTierName(tier)) {
+                    case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicPurifying;
+                    case "Advanced" -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedPurifying;
+                    case "Elite" -> MMCConfig.MEK_MACHINE_CONFIG.ElitePurifying;
+                    case "Ultimate" -> MMCConfig.MEK_MACHINE_CONFIG.UltimateInjecting;
+                    case "Overclocked" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Overclockedpurifying;
+                    case "Quantum" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Quantumpurifying;
+                    case "Dense" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Densepurifying;
+                    case "Multiversal" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Multiversalpurifying;
+                    case "Creative" -> MMCConfig.EVO_MEK_MACHINE_CONFIG.Creativepurifying;
+                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
+                };
+            } else {
+                return switch (tier) {
+                    case BASIC -> MMCConfig.MEK_MACHINE_CONFIG.BasicPurifying;
+                    case ADVANCED -> MMCConfig.MEK_MACHINE_CONFIG.AdvancedPurifying;
+                    case ELITE -> MMCConfig.MEK_MACHINE_CONFIG.ElitePurifying;
+                    case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimatePurifying;
+                };
+            }
         }
     }
 

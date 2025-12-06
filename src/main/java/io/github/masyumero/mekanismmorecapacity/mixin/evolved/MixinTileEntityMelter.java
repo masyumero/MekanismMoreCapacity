@@ -24,6 +24,6 @@ public abstract class MixinTileEntityMelter extends TileEntityProgressMachine<It
 
     @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 16000))
     private int getInitialFluidTanksModify(int constant) {
-        return MMCConfig.EVO_MEK_MACHINE_CONFIG.THERMALIZER.get();
+        return MMCConfig.EVO_MEK_MACHINE_CONFIG.Thermalizer.get();
     }
 }
