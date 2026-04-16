@@ -44,36 +44,6 @@ public class MMCMekMMMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue MultiversalDissolvingFactoOutput;
     public final CachedLongValue CreativeDissolvingFactoryOutput;
 
-    public final CachedLongValue BasicChemicalToChemicalFactoryinputR;
-    public final CachedLongValue AdvancedChemicalToChemicalFactoryinputR;
-    public final CachedLongValue EliteChemicalToChemicalFactoryinputR;
-    public final CachedLongValue UltimateChemicalToChemicalFactoryinputR;
-    public final CachedLongValue OverclockedChemicalToChemicalFactoryinputR;
-    public final CachedLongValue QuantumChemicalToChemicalFactoryinputR;
-    public final CachedLongValue DenseChemicalToChemicalFactoryinputR;
-    public final CachedLongValue MultiversalChemicalToChemicalFactoryinputR;
-    public final CachedLongValue CreativeChemicalToChemicalFactoryinputR;
-
-    public final CachedLongValue BasicChemicalToChemicalFactoryoutput;
-    public final CachedLongValue AdvancedChemicalToChemicalFactoryoutput;
-    public final CachedLongValue EliteChemicalToChemicalFactoryoutput;
-    public final CachedLongValue UltimateChemicalToChemicalFactoryoutput;
-    public final CachedLongValue OverclockedChemicalToChemicalFactoryoutput;
-    public final CachedLongValue QuantumChemicalToChemicalFactoryoutput;
-    public final CachedLongValue DenseChemicalToChemicalFactoryoutput;
-    public final CachedLongValue MultiversalChemicalToChemicalFactoryoutput;
-    public final CachedLongValue CreativeChemicalToChemicalFactoryoutput;
-
-    public final CachedLongValue BasicChemicalToChemicalFactoryinputL;
-    public final CachedLongValue AdvancedChemicalToChemicalFactoryinputL;
-    public final CachedLongValue EliteChemicalToChemicalFactoryinputL;
-    public final CachedLongValue UltimateChemicalToChemicalFactoryinputL;
-    public final CachedLongValue OverclockedChemicalToChemicalFactoryinputL;
-    public final CachedLongValue QuantumChemicalToChemicalFactoryinputL;
-    public final CachedLongValue DenseChemicalToChemicalFactoryinputL;
-    public final CachedLongValue MultiversalChemicalToChemicalFactoryinputL;
-    public final CachedLongValue CreativeChemicalToChemicalFactoryinputL;
-
     public final CachedLongValue BasicCentrifugingFactoryinput;
     public final CachedLongValue AdvancedCentrifugingFactoryinput;
     public final CachedLongValue EliteCentrifugingFactoryinput;
@@ -93,26 +63,6 @@ public class MMCMekMMMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue MultiversalCentrifugingFactoryoutput;
     public final CachedLongValue CreativeCentrifugingFactoryoutput;
 
-//    public final CachedLongValue BasicChemicalInfusingFactoryinputR;
-//    public final CachedLongValue AdvancedChemicalInfusingFactoryinputR;
-//    public final CachedLongValue EliteChemicalInfusingFactoryinputR;
-//    public final CachedLongValue UltimateChemicalInfusingFactoryinputR;
-//    public final CachedLongValue BasicChemicalInfusingFactoryoutput;
-//    public final CachedLongValue AdvancedChemicalInfusingFactoryoutput;
-//    public final CachedLongValue EliteChemicalInfusingFactoryoutput;
-//    public final CachedLongValue UltimateChemicalInfusingFactoryoutput;
-//    public final CachedLongValue BasicChemicalInfusingFactoryinputL;
-//    public final CachedLongValue AdvancedChemicalInfusingFactoryinputL;
-//    public final CachedLongValue EliteChemicalInfusingFactoryinputL;
-//    public final CachedLongValue UltimateChemicalInfusingFactoryinputL;
-//    public final CachedLongValue BasicSolarNeutronActivatingFactoryinput;
-//    public final CachedLongValue AdvancedSolarNeutronActivatingFactoryinput;
-//    public final CachedLongValue EliteSolarNeutronActivatingFactoryinput;
-//    public final CachedLongValue UltimateSolarNeutronActivatingFactoryinput;
-//    public final CachedLongValue BasicSolarNeutronActivatingFactoryoutput;
-//    public final CachedLongValue AdvancedSolarNeutronActivatingFactoryoutput;
-//    public final CachedLongValue EliteSolarNeutronActivatingFactoryoutput;
-//    public final CachedLongValue UltimateSolarNeutronActivatingFactoryoutput;
     public final CachedLongValue BasicCrystallizingFactory;
     public final CachedLongValue AdvancedCrystallizingFactory;
     public final CachedLongValue EliteCrystallizingFactory;
@@ -200,6 +150,26 @@ public class MMCMekMMMachineConfig extends BaseMekanismConfig {
     public final CachedIntValue FluidReplicatorFluidInput;
     public final CachedIntValue FluidReplicatorFluidOutput;
 
+    public final CachedLongValue largeAntiprotonicNucleosynthesizer;
+
+    public final CachedLongValue leftInputLargeChemicalInfuser;
+    public final CachedLongValue rightInputLargeChemicalInfuser;
+    public final CachedLongValue outputLargeChemicalInfuser;
+
+    public final CachedIntValue inputLargeElectrolyticSeparator;
+    public final CachedLongValue leftOutputLargeElectrolyticSeparator;
+    public final CachedLongValue rightOutputLargeElectrolyticSeparator;
+
+    public final CachedLongValue leftInputLargePigmentMixer;
+    public final CachedLongValue rightInputLargePigmentMixer;
+    public final CachedLongValue outputLargePigmentMixer;
+
+    public final CachedLongValue gasLargeRotaryCondensentrator;
+    public final CachedIntValue fluidLargeRotaryCondensentrator;
+
+    public final CachedLongValue inputLargeSolarNeutronActivator;
+    public final CachedLongValue outputLargeSolarNeutronActivator;
+
     public MMCMekMMMachineConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.comment("Adjustment of the capacity of the machine's internal tank");
@@ -254,37 +224,6 @@ public class MMCMekMMMachineConfig extends BaseMekanismConfig {
         MultiversalCentrifugingFactoryoutput =  CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 17000000, Vanilla: 170000").defineInRange("MultiversalChemicalOutputTankCapacity", 17000000, 1, Long.MAX_VALUE));
         CreativeCentrifugingFactoryoutput =     CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 19000000, Vanilla: 190000").defineInRange("CreativeChemicalOutputTankCapacity", 19000000, 1, Long.MAX_VALUE));
 
-        builder.pop().push("ChemicalInfusingFactory");
-//        builder.pop().push("ChemicalToChemicalFactory");
-        BasicChemicalToChemicalFactoryinputR =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 3000000, Vanilla: 30000").defineInRange("basicChemicalRightInputTankCapacity", 3000000, 1, Long.MAX_VALUE));
-        AdvancedChemicalToChemicalFactoryinputR =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 5000000, Vanilla: 50000").defineInRange("advancedChemicalRightInputTankCapacity", 5000000, 1, Long.MAX_VALUE));
-        EliteChemicalToChemicalFactoryinputR =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 7000000, Vanilla: 70000").defineInRange("eliteChemicalRightInputTankCapacity", 7000000, 1, Long.MAX_VALUE));
-        UltimateChemicalToChemicalFactoryinputR =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 9000000, Vanilla: 90000").defineInRange("ultimateChemicalRightInputTankCapacity", 9000000, 1, Long.MAX_VALUE));
-        OverclockedChemicalToChemicalFactoryinputR =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 11000000, Vanilla: 110000").defineInRange("OverclockedChemicalRightInputTankCapacity", 11000000, 1, Long.MAX_VALUE));
-        QuantumChemicalToChemicalFactoryinputR =        CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 13000000, Vanilla: 130000").defineInRange("QuantumChemicalRightInputTankCapacity", 13000000, 1, Long.MAX_VALUE));
-        DenseChemicalToChemicalFactoryinputR =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 15000000, Vanilla: 150000").defineInRange("DenseChemicalRightInputTankCapacity", 15000000, 1, Long.MAX_VALUE));
-        MultiversalChemicalToChemicalFactoryinputR =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 17000000, Vanilla: 170000").defineInRange("MultiversalChemicalRightInputTankCapacity", 17000000, 1, Long.MAX_VALUE));
-        CreativeChemicalToChemicalFactoryinputR =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB) Chemical Infusing Factory only. Default: 19000000, Vanilla: 190000").defineInRange("CreativeChemicalRightInputTankCapacity", 19000000, 1, Long.MAX_VALUE));
-
-        BasicChemicalToChemicalFactoryoutput =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 3000000, Vanilla: 30000").defineInRange("basicChemicalOutputTankCapacity", 3000000, 1, Long.MAX_VALUE));
-        AdvancedChemicalToChemicalFactoryoutput =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 5000000, Vanilla: 50000").defineInRange("advancedChemicalOutputTankCapacity", 5000000, 1, Long.MAX_VALUE));
-        EliteChemicalToChemicalFactoryoutput =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 7000000, Vanilla: 70000").defineInRange("eliteChemicalOutputTankCapacity", 7000000, 1, Long.MAX_VALUE));
-        UltimateChemicalToChemicalFactoryoutput =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 9000000, Vanilla: 90000").defineInRange("ultimateChemicalOutputTankCapacity", 9000000, 1, Long.MAX_VALUE));
-        OverclockedChemicalToChemicalFactoryoutput =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 11000000, Vanilla: 110000").defineInRange("OverclockedChemicalOutputTankCapacity", 11000000, 1, Long.MAX_VALUE));
-        QuantumChemicalToChemicalFactoryoutput =        CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 13000000, Vanilla: 130000").defineInRange("QuantumChemicalOutputTankCapacity", 13000000, 1, Long.MAX_VALUE));
-        DenseChemicalToChemicalFactoryoutput =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 15000000, Vanilla: 150000").defineInRange("DenseChemicalOutputTankCapacity", 15000000, 1, Long.MAX_VALUE));
-        MultiversalChemicalToChemicalFactoryoutput =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 17000000, Vanilla: 170000").defineInRange("MultiversalChemicalOutputTankCapacity", 17000000, 1, Long.MAX_VALUE));
-        CreativeChemicalToChemicalFactoryoutput =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 19000000, Vanilla: 190000").defineInRange("CreativeChemicalOutputTankCapacity", 19000000, 1, Long.MAX_VALUE));
-
-        BasicChemicalToChemicalFactoryinputL =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 3000000, Vanilla: 30000").defineInRange("basicChemicalLeftInputTankCapacity", 3000000, 1, Long.MAX_VALUE));
-        AdvancedChemicalToChemicalFactoryinputL =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 5000000, Vanilla: 50000").defineInRange("advancedChemicalLeftInputTankCapacity", 5000000, 1, Long.MAX_VALUE));
-        EliteChemicalToChemicalFactoryinputL =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 7000000, Vanilla: 70000").defineInRange("eliteChemicalLeftInputTankCapacity", 7000000, 1, Long.MAX_VALUE));
-        UltimateChemicalToChemicalFactoryinputL =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 9000000, Vanilla: 90000").defineInRange("ultimateChemicalLeftInputTankCapacity", 9000000, 1, Long.MAX_VALUE));
-        OverclockedChemicalToChemicalFactoryinputL =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 11000000, Vanilla: 110000").defineInRange("OverclockedChemicalLeftInputTankCapacity", 11000000, 1, Long.MAX_VALUE));
-        QuantumChemicalToChemicalFactoryinputL =        CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 13000000, Vanilla: 130000").defineInRange("QuantumChemicalLeftInputTankCapacity", 13000000, 1, Long.MAX_VALUE));
-        DenseChemicalToChemicalFactoryinputL =          CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 15000000, Vanilla: 150000").defineInRange("DenseChemicalLeftInputTankCapacity", 15000000, 1, Long.MAX_VALUE));
-        MultiversalChemicalToChemicalFactoryinputL =    CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 17000000, Vanilla: 170000").defineInRange("MultiversalChemicalLeftInputTankCapacity", 17000000, 1, Long.MAX_VALUE));
-        CreativeChemicalToChemicalFactoryinputL =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 19000000, Vanilla: 190000").defineInRange("CreativeChemicalLeftInputTankCapacity", 19000000, 1, Long.MAX_VALUE));
         builder.pop().push("CrystallizingFactory");
         BasicCrystallizingFactory =         CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 3000000, Vanilla: 30000").defineInRange("basicChemicalTankCapacity", 3000000, 1, Long.MAX_VALUE));
         AdvancedCrystallizingFactory =      CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 5000000, Vanilla: 50000").defineInRange("advancedChemicalTankCapacity", 5000000, 1, Long.MAX_VALUE));
@@ -382,6 +321,26 @@ public class MMCMekMMMachineConfig extends BaseMekanismConfig {
         FluidReplicatorGasInput =       CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalInputTankCapacity", 1000000, 1, Long.MAX_VALUE));
         FluidReplicatorFluidInput =     CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 100000, Vanilla: 1000").defineInRange("FluidOutputTankCapacity", 100000, 1, Integer.MAX_VALUE));
         FluidReplicatorFluidOutput =    CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla:10000").defineInRange("FluidOutputTankCapacity", 1000000, 1, Integer.MAX_VALUE));
+        builder.pop().push("AntiprotonicNucleosynthesizer");
+        largeAntiprotonicNucleosynthesizer = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalInputTankCapacity", 1000000L, 1, Long.MAX_VALUE));
+        builder.pop().push("LargeChemicalInfuser");
+        leftInputLargeChemicalInfuser = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 500000000, Vanilla: 5000000").defineInRange("ChemicalInputLeftTankCapacity", 500000000L, 1, Long.MAX_VALUE));
+        rightInputLargeChemicalInfuser = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 500000000, Vanilla: 5000000").defineInRange("ChemicalInputRightTankCapacity", 500000000L, 1, Long.MAX_VALUE));
+        outputLargeChemicalInfuser = CachedLongValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("ChemicalOutputTankCapacity", 1000000000L, 1, Long.MAX_VALUE));
+        builder.pop().push("LargeElectrolyticSeparator");
+        inputLargeElectrolyticSeparator = CachedIntValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 2147483647, Vanilla: 24000000").defineInRange("FluidInputTankCapacity", Integer.MAX_VALUE, 1, Integer.MAX_VALUE));
+        leftOutputLargeElectrolyticSeparator = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 2400000000, Vanilla: 24000000").defineInRange("ChemicalOutputLeftTankCapacity", 2400000000L, 1, Long.MAX_VALUE));
+        rightOutputLargeElectrolyticSeparator = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 2400000000, Vanilla: 24000000").defineInRange("ChemicalOutputRightTankCapacity", 2400000000L, 1, Long.MAX_VALUE));
+        builder.pop().push("LargePigmentMixer");
+        leftInputLargePigmentMixer = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 500000000, Vanilla: 5000000").defineInRange("ChemicalInputLeftTankCapacity", 500000000L, 1, Long.MAX_VALUE));
+        rightInputLargePigmentMixer = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 500000000, Vanilla: 5000000").defineInRange("ChemicalInputRightTankCapacity", 500000000L, 1, Long.MAX_VALUE));
+        outputLargePigmentMixer = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("ChemicalOutputTankCapacity", 1000000000L, 1, Long.MAX_VALUE));
+        builder.pop().push("LargeRotaryCondensentrator");
+        gasLargeRotaryCondensentrator = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("ChemicalTankCapacity", 1000000000L, 1, Long.MAX_VALUE));
+        fluidLargeRotaryCondensentrator = CachedIntValue.wrap(this, builder.comment("Fluid tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("FluidTankCapacity", 1000000000, 1, Integer.MAX_VALUE));
+        builder.pop().push("LargeSolarNeutronActivator");
+        inputLargeSolarNeutronActivator = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("ChemicalInputTankCapacity", 1000000000L, 1, Long.MAX_VALUE));
+        outputLargeSolarNeutronActivator = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000000, Vanilla: 10000000").defineInRange("ChemicalOutputTankCapacity", 1000000000L, 1, Long.MAX_VALUE));
         configSpec = builder.build();
     }
 

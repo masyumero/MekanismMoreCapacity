@@ -132,43 +132,41 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        name "JEI"
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        url "https://cursemaven.com"
-    }
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
+    mavenLocal()
     maven { url 'https://modmaven.dev/' }
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    maven {
+        // Curse Forge File
+        url "https://cursemaven.com/"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        // EMI
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly "mekanism:Mekanism:${mekanism_version}"
 
-    implementation fg.deobf("curse.maven:evolved-mekanism-1230085:7117024")
-    implementation fg.deobf("curse.maven:mekanism-elements-1103224:6537553")
-    implementation fg.deobf("curse.maven:mekanism-extras-1026040:6936409")
-    implementation fg.deobf("curse.maven:mekanism-more-machine-1275257:7156475")
-    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-    runtimeOnly fg.deobf("curse.maven:emi-580555:5872526")
-    runtimeOnly fg.deobf("curse.maven:jade-324717:5672013")
-    runtimeOnly fg.deobf("curse.maven:configured-457570:5180900")
-    runtimeOnly fg.deobf("curse.maven:iglee-library-541199:6987117")
+    implementation fg.deobf(forge.mekanism)
+    implementation fg.deobf(variantOf(forge.mekanism) { classifier("generators") })
+    implementation fg.deobf(variantOf(forge.mekanism) { classifier("additions") })
+    implementation fg.deobf(variantOf(forge.mekanism) { classifier("tools") })
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf(forge.mekanismElements)
+    implementation fg.deobf(forge.mekanismExtras)
+    implementation fg.deobf(forge.evolvedMekanism)
+    implementation fg.deobf(forge.mekanismMoreMachine)
+    runtimeOnly fg.deobf(forge.igleelib)
+
+    // JEI, EMI, Jade
+    compileOnly fg.deobf(forge.bundles.jei)
+    implementation fg.deobf(forge.emi)
+    runtimeOnly fg.deobf(forge.jei.forge.impl)
+    runtimeOnly fg.deobf(forge.jade)
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
