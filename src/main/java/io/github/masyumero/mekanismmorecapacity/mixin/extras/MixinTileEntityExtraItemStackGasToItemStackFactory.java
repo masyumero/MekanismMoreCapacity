@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemStackGasToItemStackExtraFactory;
-import com.jerry.mekanism_extras.common.tile.factory.TileEntityItemToItemExtraFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityExtraItemStackGasToItemStackFactory;
+import com.jerry.mekanism_extras.common.tile.factory.TileEntityExtraItemToItemFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
@@ -21,11 +21,11 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import java.util.List;
 import java.util.Set;
 
-@Mixin(value = TileEntityItemStackGasToItemStackExtraFactory.class,remap = false)
-public abstract class MixinTileEntityItemStackGasToItemStackExtraFactory extends TileEntityItemToItemExtraFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
+@Mixin(value = TileEntityExtraItemStackGasToItemStackFactory.class,remap = false)
+public abstract class MixinTileEntityExtraItemStackGasToItemStackFactory extends TileEntityExtraItemToItemFactory<ItemStackGasToItemStackRecipe> implements IHasDumpButton,
         IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<Gas, GasStack, ItemStackGasToItemStackRecipe>, IRecipeLookupHandler.ConstantUsageRecipeLookupHandler {
 
-    protected MixinTileEntityItemStackGasToItemStackExtraFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
+    protected MixinTileEntityExtraItemStackGasToItemStackFactory(IBlockProvider blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);
     }
 
