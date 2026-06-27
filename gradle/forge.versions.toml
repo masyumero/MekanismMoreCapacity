@@ -8,10 +8,10 @@ jade = "5390389" # 11.9.3
 
 mekanism = "1.20.1-10.4.16.80"
 mekanismElements = "6537553" # 2.3
-mekanismExtras = "6936409" # 1.4.6
+mekanismExtras = "8247562" # 1.5.0
 igleelib = "6987117" # 1.2.7
-evolvedMekanism = "7161181" # 1.2.1
-mekanismMoreMachine = "7846914" # 1.2.0
+evolvedMekanism = "7599591" # 1.2.1-fix4
+mekanismMoreMachine = "7884538" # 1.2.1
 
 configured = "5180900"
 
