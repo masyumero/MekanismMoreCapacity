@@ -26,16 +26,31 @@ public abstract class MixinTileEntityExtraItemToChemicalFactory<RECIPE extends M
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long outputModifyArg(long capacity) {
-        return capacity;
+        return mekanismMoreCapacity$getOutputCapacity();
     }
 
     @Unique
     private long mekanismMoreCapacity$getOutputCapacity() {
-        return switch (tier) {
-            case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteDissolvingOutput.get();
-            case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeDissolvingOutput.get();
-            case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicDissolvingOutput.get();
-            case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteDissolvingOutput.get();
+        return switch (type) {
+            case DISSOLVING -> switch (tier) {
+                case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteDissolvingOutput.get();
+                case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeDissolvingOutput.get();
+                case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicDissolvingOutput.get();
+                case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteDissolvingOutput.get();
+            };
+            case OXIDIZING -> switch (tier) {
+                case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteOxidizing.get();
+                case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeOxidizing.get();
+                case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicOxidizing.get();
+                case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteOxidizing.get();
+            };
+            case PIGMENT_EXTRACTING -> switch (tier) {
+                case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePigmentExtracting.get();
+                case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePigmentExtracting.get();
+                case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicPigmentExtracting.get();
+                case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfinitePigmentExtracting.get();
+            };
+            default -> throw new IllegalStateException("Unhandled factory type");
         };
     }
 }
