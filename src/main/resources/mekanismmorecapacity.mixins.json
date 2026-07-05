@@ -17,6 +17,7 @@
     "extras.integration.MixinTileEntityExtraItemToFluidFactory",
     "extras.integration.MixinTileEntityExtraItemToGasFactory",
     "extras.integration.MixinTileEntityExtraItemToMergedFactory",
+    "extras.integration.MixinTileEntityExtraItemToPigmentFactory",
     "extras.integration.MixinTileEntityExtraPaintingFactory",
     "extras.integration.MixinTileEntityExtraPlantingFactory",
     "extras.integration.MixinTileEntityExtraPressurizedReactingFactory",

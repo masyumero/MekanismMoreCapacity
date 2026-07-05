@@ -30,20 +30,11 @@ public abstract class MixinTileEntityExtraItemToGasFactory<RECIPE extends Mekani
 
     @Unique
     private long mekanismMoreCapacity$getOutputCapacity() {
-        return switch (type) {
-            case OXIDIZING -> switch (tier) {
-                case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteOxidizing.get();
-                case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeOxidizing.get();
-                case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicOxidizing.get();
-                case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteOxidizing.get();
-            };
-            case PIGMENT_EXTRACTING -> switch (tier) {
-                case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePigmentExtracting.get();
-                case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePigmentExtracting.get();
-                case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicPigmentExtracting.get();
-                case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfinitePigmentExtracting.get();
-            };
-            default -> throw new IllegalStateException("Unhandled factory type");
+        return switch (tier) {
+            case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteOxidizing.get();
+            case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeOxidizing.get();
+            case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicOxidizing.get();
+            case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteOxidizing.get();
         };
     }
 }
