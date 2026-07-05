@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
 import com.jerry.mekmm.api.recipes.basic.MMBasicItemStackChemicalToItemStackRecipe;
-import com.jerry.mekmm.common.tile.factory.TileEntityItemToItemMMFactory;
+import com.jerry.mekmm.common.tile.factory.TileEntityMoreMachineItemToItemFactory;
 import com.jerry.mekmm.common.tile.factory.TileEntityReplicatingFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @Mixin(value = TileEntityReplicatingFactory.class,remap = false)
-public abstract class MixinTileEntityReplicatingFactory extends TileEntityItemToItemMMFactory<MMBasicItemStackChemicalToItemStackRecipe> implements IHasDumpButton, IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<MMBasicItemStackChemicalToItemStackRecipe> {
+public abstract class MixinTileEntityReplicatingFactory extends TileEntityMoreMachineItemToItemFactory<MMBasicItemStackChemicalToItemStackRecipe> implements IHasDumpButton, IDoubleRecipeLookupHandler.ItemChemicalRecipeLookupHandler<MMBasicItemStackChemicalToItemStackRecipe> {
 
     protected MixinTileEntityReplicatingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
         super(blockProvider, pos, state, errorTypes, globalErrorTypes);

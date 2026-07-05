@@ -106,10 +106,10 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     compileOnly "mekanism:Mekanism:${mekanism_version}"
-    compileOnly "curse.maven:mekanism-elements-1103224:6393948"
-    implementation "curse.maven:mekanism-extras-1026040:7135934"
-    implementation "curse.maven:mekanism-more-machine-1275257:7277351"
-    implementation "curse.maven:evolved-mekanism-1230085:7161187"
+    implementation "curse.maven:mekanism-elements-1103224:8326651"
+    implementation "curse.maven:mekanism-extras-1026040:7921191"
+    implementation "curse.maven:mekanism-more-machine-1275257:7919872"
+    implementation "curse.maven:evolved-mekanism-1230085:7599592"
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly "mekanism:Mekanism:${mekanism_version}"// core
     runtimeOnly "mekanism:Mekanism:${mekanism_version}:additions"// Mekanism: Additions

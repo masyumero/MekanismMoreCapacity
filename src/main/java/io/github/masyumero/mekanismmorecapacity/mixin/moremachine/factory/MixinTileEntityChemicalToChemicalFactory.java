@@ -1,8 +1,8 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
 import com.jerry.mekaf.common.content.blocktype.AdvancedFactoryType;
-import com.jerry.mekaf.common.tile.factory.TileEntityAdvancedFactoryBase;
-import com.jerry.mekaf.common.tile.factory.TileEntityChemicalToChemicalFactory;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityAdvancedFactoryBase;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityChemicalToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
 import mekanism.api.recipes.MekanismRecipe;
@@ -55,7 +55,7 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateCentrifugingFactoryinput;
                 };
             }
-        } else if (getAdvancedFactoryType() == AdvancedFactoryType.WASHING) {
+        } else {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicWashingFactoryInput;
@@ -75,30 +75,6 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedWashingFactoryInput;
                     case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteWashingFactoryInput;
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateWashingFactoryInput;
-                };
-            }
-        } else {
-            if (ModList.get().isLoaded("evolvedmekanism")) {
-                return switch (TierUtil.getTierName(tier)) {
-                    case "Basic" -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputL;
-                    case "Advanced" -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputL;
-                    case "Elite" -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputL;
-                    case "Ultimate" -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputL;
-                    case "Overclocked" ->
-                            MMCConfig.MEK_MM_MACHINE_CONFIG.OverclockedChemicalToChemicalFactoryinputL;
-                    case "Quantum" -> MMCConfig.MEK_MM_MACHINE_CONFIG.QuantumChemicalToChemicalFactoryinputL;
-                    case "Dense" -> MMCConfig.MEK_MM_MACHINE_CONFIG.DenseChemicalToChemicalFactoryinputL;
-                    case "Multiversal" ->
-                            MMCConfig.MEK_MM_MACHINE_CONFIG.MultiversalChemicalToChemicalFactoryinputL;
-                    case "Creative" -> MMCConfig.MEK_MM_MACHINE_CONFIG.CreativeChemicalToChemicalFactoryinputL;
-                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
-                };
-            } else {
-                return switch (tier) {
-                    case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryinputL;
-                    case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryinputL;
-                    case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryinputL;
-                    case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryinputL;
                 };
             }
         }
@@ -132,7 +108,7 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateCentrifugingFactoryoutput;
                 };
             }
-        } else if (getAdvancedFactoryType() == AdvancedFactoryType.WASHING) {
+        } else {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicWashingFactoryOutput;
@@ -152,28 +128,6 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedWashingFactoryOutput;
                     case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteWashingFactoryOutput;
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateWashingFactoryOutput;
-                };
-            }
-        } else {
-            if (ModList.get().isLoaded("evolvedmekanism")) {
-                return switch (TierUtil.getTierName(tier)) {
-                    case "Basic" -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryoutput;
-                    case "Advanced" -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryoutput;
-                    case "Elite" -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryoutput;
-                    case "Ultimate" -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryoutput;
-                    case "Overclocked" -> MMCConfig.MEK_MM_MACHINE_CONFIG.OverclockedChemicalToChemicalFactoryoutput;
-                    case "Quantum" -> MMCConfig.MEK_MM_MACHINE_CONFIG.QuantumChemicalToChemicalFactoryoutput;
-                    case "Dense" -> MMCConfig.MEK_MM_MACHINE_CONFIG.DenseChemicalToChemicalFactoryoutput;
-                    case "Multiversal" -> MMCConfig.MEK_MM_MACHINE_CONFIG.MultiversalChemicalToChemicalFactoryoutput;
-                    case "Creative" -> MMCConfig.MEK_MM_MACHINE_CONFIG.CreativeChemicalToChemicalFactoryoutput;
-                    default -> throw new IllegalStateException("Unexpected value: " + TierUtil.getTierName(tier));
-                };
-            } else {
-                return switch (tier) {
-                    case BASIC -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicChemicalToChemicalFactoryoutput;
-                    case ADVANCED -> MMCConfig.MEK_MM_MACHINE_CONFIG.AdvancedChemicalToChemicalFactoryoutput;
-                    case ELITE -> MMCConfig.MEK_MM_MACHINE_CONFIG.EliteChemicalToChemicalFactoryoutput;
-                    case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateChemicalToChemicalFactoryoutput;
                 };
             }
         }

@@ -1,7 +1,7 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
 import com.jerry.mekaf.common.tile.factory.TileEntityDissolvingFactory;
-import com.jerry.mekaf.common.tile.factory.TileEntityItemToChemicalFactory;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityItemToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
 import mekanism.api.recipes.ChemicalDissolutionRecipe;

@@ -1,8 +1,8 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
 import com.jerry.mekaf.common.content.blocktype.AdvancedFactoryType;
-import com.jerry.mekaf.common.tile.factory.TileEntityAdvancedFactoryBase;
-import com.jerry.mekaf.common.tile.factory.TileEntityItemToChemicalFactory;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityAdvancedFactoryBase;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityItemToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
 import mekanism.api.recipes.MekanismRecipe;

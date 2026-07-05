@@ -25,7 +25,7 @@ public class MMCConfig {
         if(ModList.get().isLoaded("mekanism_extras")) {
             MMCConfigHelper.registerConfig(KNOWN_CONFIGS, modContainer, MEK_EXTRAS_MACHINE_CONFIG);
         }
-        if(ModList.get().isLoaded("mekanismscience")) {
+        if(ModList.get().isLoaded("mekanismelements")) {
             MMCConfigHelper.registerConfig(KNOWN_CONFIGS, modContainer, MEK_SCIENCE_MACHINE_CONFIG);
         }
         if(ModList.get().isLoaded("mekmm")) {

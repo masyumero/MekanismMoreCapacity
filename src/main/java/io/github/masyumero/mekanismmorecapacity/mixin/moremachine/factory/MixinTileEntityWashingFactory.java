@@ -1,6 +1,6 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
-import com.jerry.mekaf.common.tile.factory.TileEntityChemicalToChemicalFactory;
+import com.jerry.mekaf.common.tile.factory.base.TileEntityChemicalToChemicalFactory;
 import com.jerry.mekaf.common.tile.factory.TileEntityWashingFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
