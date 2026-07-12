@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.masyumero.mekanismmorecapacity.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "MekanismMoreCapacity.refmap.json",
+  "mixins": [
+    "machine.MixinTileEntityChemicalInfuserSquared"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "io.github.masyumero.mekanismmorecapacity.MMCElementsMixinPlugin"
+}
