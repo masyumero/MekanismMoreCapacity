@@ -19,7 +19,7 @@ public class MixinTileEntityLargeElectrolyticSeparator {
         return MMCConfig.MEK_MM_MACHINE_CONFIG.leftOutputLargeElectrolyticSeparator.get();
     }
 
-    @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 0), index = 0)
+    @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 1), index = 0)
     private long rightOutputModifyArg(long capacity) {
         return MMCConfig.MEK_MM_MACHINE_CONFIG.rightOutputLargeElectrolyticSeparator.get();
     }
