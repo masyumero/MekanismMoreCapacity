@@ -8,12 +8,6 @@ import net.minecraftforge.fml.config.ModConfig;
 
 public class MMCMekMMMachineConfig extends BaseMekanismConfig {
 
-//    Overclocked
-//    Quantum
-//    Dense
-//    Multiversal
-//    Creative
-
     private final ForgeConfigSpec configSpec;
     public final CachedLongValue BasicOxidizingFactory;
     public final CachedLongValue AdvancedOxidizingFactory;
