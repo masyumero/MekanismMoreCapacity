@@ -62,9 +62,9 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         ChemicalDissolutionChamberInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         ChemicalDissolutionChamberOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalInfuser");
-        ChemicalInfuserRight = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("rightChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
-        ChemicalInfuserLeft = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("leftChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
-        ChemicalInfuserCenter = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("centerChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfuserRight = CachedLongValue.wrap(this,builder.comment("(It does not work. The cause is unknown.) Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("rightChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfuserLeft = CachedLongValue.wrap(this,builder.comment("(It does not work. The cause is unknown.) Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("leftChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
+        ChemicalInfuserCenter = CachedLongValue.wrap(this,builder.comment("(It does not work. The cause is unknown.) Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("centerChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalOxidizer");
         ChemicalOxidizer = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("chemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("ChemicalWasher");
