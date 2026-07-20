@@ -31,7 +31,7 @@ public abstract class MixinTileEntityExtraMergedToItemFactory<RECIPE extends Mek
             at = @At("STORE"),
             name = "maxAmount"
     )
-    private long inputModifyVariable(long maxAmount) {
+    private long maxAmountModifyVariable(long maxAmount) {
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteCrystallizing.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeCrystallizing.get();
