@@ -61,6 +61,10 @@ public class MMCMekExtrasMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue SupremeOxidizing;
     public final CachedLongValue CosmicOxidizing;
     public final CachedLongValue InfiniteOxidizing;
+    public final CachedLongValue AbsoluteCrystallizing;
+    public final CachedLongValue SupremeCrystallizing;
+    public final CachedLongValue CosmicCrystallizing;
+    public final CachedLongValue InfiniteCrystallizing;
     public final CachedLongValue AbsolutePigmentExtracting;
     public final CachedLongValue SupremePigmentExtracting;
     public final CachedLongValue CosmicPigmentExtracting;
@@ -154,6 +158,11 @@ public class MMCMekExtrasMachineConfig extends BaseMekanismConfig {
         SupremeOxidizing        = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 13000000, Vanilla: 130000").defineInRange("supremeChemicalTankCapacity", 13000000, 1, Long.MAX_VALUE));
         CosmicOxidizing         = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 15000000, Vanilla: 150000").defineInRange("cosmicChemicalTankCapacity", 15000000, 1, Long.MAX_VALUE));
         InfiniteOxidizing       = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 17000000, Vanilla: 170000").defineInRange("infiniteChemicalTankCapacity", 17000000, 1, Long.MAX_VALUE));
+        builder.pop().push("CrystallizingFactoryExtras");
+        AbsoluteCrystallizing   = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 11000000, Vanilla: 110000").defineInRange("absoluteChemicalTankCapacity", 11000000, 1, Long.MAX_VALUE));
+        SupremeCrystallizing    = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 13000000, Vanilla: 130000").defineInRange("supremeChemicalTankCapacity", 13000000, 1, Long.MAX_VALUE));
+        CosmicCrystallizing     = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 15000000, Vanilla: 150000").defineInRange("cosmicChemicalTankCapacity", 15000000, 1, Long.MAX_VALUE));
+        InfiniteCrystallizing   = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 17000000, Vanilla: 170000").defineInRange("infiniteChemicalTankCapacity", 17000000, 1, Long.MAX_VALUE));
         builder.pop().push("PigmentExtractingFactoryExtras");
         AbsolutePigmentExtracting   = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 11000000, Vanilla: 110000").defineInRange("absoluteChemicalTankCapacity", 11000000, 1, Long.MAX_VALUE));
         SupremePigmentExtracting    = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 13000000, Vanilla: 130000").defineInRange("supremeChemicalTankCapacity", 13000000, 1, Long.MAX_VALUE));

@@ -17,6 +17,7 @@
     "extras.MixinTileEntityAdvancedElectricPump",
     "extras.MixinTileEntityItemStackChemicalToItemStackAdvancedFactory",
     "extras.integration.MixinTileEntityExtraChemicalToChemicalFactory",
+    "extras.integration.MixinTileEntityExtraChemicalToItemFactory",
     "extras.integration.MixinTileEntityExtraDissolvingFactory",
     "extras.integration.MixinTileEntityExtraItemToChemicalFactory",
     "extras.integration.MixinTileEntityExtraLiquifyingFactory",
