@@ -96,7 +96,7 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         SolarNeutronActivatorInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         SolarNeutronActivatorOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("sps");
-        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 200, Vanilla: 2").defineInRange("inputTankCapacity", 200, 1,1000000000L));
+        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Default: 200000, Vanilla: 2000").defineInRange("inputTankCapacity", 200000, 1,Long.MAX_VALUE));
         builder.pop().push("ElectricPump");
         ElectricPump = CachedIntValue.wrap(this,builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("fluidTankCapacity",1000000,1,Integer.MAX_VALUE));
         builder.pop().push("factories")
