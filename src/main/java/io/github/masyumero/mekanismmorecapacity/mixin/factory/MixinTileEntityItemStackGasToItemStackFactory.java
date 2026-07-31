@@ -7,6 +7,8 @@ import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
+import mekanism.common.block.attribute.AttributeFactoryType;
 import mekanism.common.config.value.CachedLongValue;
 import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
@@ -45,7 +47,8 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
 
     @Unique
     private CachedLongValue getConfigValue() {
-        if (getFactoryType() == FactoryType.COMPRESSING) {
+        FactoryType type = Attribute.get(blockProvider, AttributeFactoryType.class).getFactoryType();
+        if (type == FactoryType.COMPRESSING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicCompressing;
@@ -67,7 +70,7 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
                     case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateCompressing;
                 };
             }
-        } else if(getFactoryType() == FactoryType.INJECTING) {
+        } else if(type == FactoryType.INJECTING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicInjecting;
@@ -89,7 +92,7 @@ public abstract class MixinTileEntityItemStackGasToItemStackFactory extends Tile
                     case ULTIMATE -> MMCConfig.MEK_MACHINE_CONFIG.UltimateInjecting;
                 };
             }
-        } else if(getFactoryType() == FactoryType.INFUSING) {
+        } else if(type == FactoryType.INFUSING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MACHINE_CONFIG.BasicMetallurgicInfuserFactory;

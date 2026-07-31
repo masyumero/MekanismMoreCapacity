@@ -8,6 +8,9 @@ import mekanism.api.chemical.gas.GasStack;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.api.recipes.ItemStackGasToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
+import mekanism.common.block.attribute.AttributeFactoryType;
+import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;
 import mekanism.common.tile.interfaces.IHasDumpButton;
@@ -41,6 +44,7 @@ public abstract class MixinTileEntityExtraItemStackGasToItemStackFactory extends
 
     @Unique
     private long mekanismMoreCapacity$getInputCapacity() {
+        FactoryType type = Attribute.get(blockProvider, AttributeFactoryType.class).getFactoryType();
         return switch (type) {
             case COMPRESSING -> switch (this.tier) {
                 case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteCompressing.get();
