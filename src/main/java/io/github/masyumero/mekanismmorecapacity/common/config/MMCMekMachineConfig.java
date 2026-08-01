@@ -20,7 +20,9 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue ChemicalWasherSlurryInput;
     public final CachedLongValue ChemicalWasherSlurryOutput;
     public final CachedIntValue ChemicalWasherFluid;
-    public final CachedLongValue CompressingInjectingPurifying;
+    public final CachedLongValue Compressing;
+    public final CachedLongValue Injecting;
+    public final CachedLongValue Purifying;
     public final CachedLongValue ElectrolyticSeparatorChemical;
     public final CachedIntValue ElectrolyticSeparatorFluid;
     public final CachedLongValue IsotopicCentrifugeInput;
@@ -73,8 +75,12 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         ChemicalWasherSlurryInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("InputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         ChemicalWasherSlurryOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("OutputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         ChemicalWasherFluid = CachedIntValue.wrap(this,builder.comment("Fluid tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("fluidTankCapacity",1000000,1,Integer.MAX_VALUE));
-        builder.pop().push("Compressing, injecting, purifying");
-        CompressingInjectingPurifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 21000, Vanilla: 210").defineInRange("chemicalTankCapacity",21000,1,(Long.MAX_VALUE/9)));
+        builder.pop().push("Compressing");
+        Compressing = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 21000, Vanilla: 210").defineInRange("chemicalTankCapacity",21000,1,Long.MAX_VALUE));
+        builder.pop().push("Injecting");
+        Injecting = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 21000, Vanilla: 210").defineInRange("chemicalTankCapacity",21000,1,Long.MAX_VALUE));
+        builder.pop().push("Purifying");
+        Purifying = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 21000, Vanilla: 210").defineInRange("chemicalTankCapacity",21000,1,Long.MAX_VALUE));
         builder.pop().push("ElectrolyticSeparator");
         ElectrolyticSeparatorChemical = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 2400000, Vanilla: 2400").defineInRange("chemicalTankCapacity",2400000,1,Long.MAX_VALUE));
         ElectrolyticSeparatorFluid = CachedIntValue.wrap(this,builder.comment("Fluid tank capacity (mB). Default: 2400000, Vanilla: 24000").defineInRange("fluidTankCapacity",2400000,1,Integer.MAX_VALUE));
