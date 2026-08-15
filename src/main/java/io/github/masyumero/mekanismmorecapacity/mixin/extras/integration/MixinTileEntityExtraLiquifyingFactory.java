@@ -1,10 +1,10 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras.integration;
 
+import com.jerry.mekextras.common.block.attribute.ExtraAttribute;
 import com.jerry.mekextras.common.integration.mekaf.tile.factory.TileEntityExtraLiquifyingFactory;
-import com.jerry.mekextras.common.integration.mekaf.tile.factory.base.TileEntityExtraAdvancedFactoryBase;
+import com.jerry.mekextras.common.tier.ExtraFactoryTier;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
-import mekanism.api.recipes.basic.BasicItemStackToFluidOptionalItemRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -14,14 +14,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityExtraLiquifyingFactory.class, remap = false)
-public abstract class MixinTileEntityExtraLiquifyingFactory extends TileEntityExtraAdvancedFactoryBase<BasicItemStackToFluidOptionalItemRecipe> {
+public abstract class MixinTileEntityExtraLiquifyingFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityExtraLiquifyingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityExtraLiquifyingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;output(ILmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;"))
@@ -31,6 +28,7 @@ public abstract class MixinTileEntityExtraLiquifyingFactory extends TileEntityEx
 
     @Unique
     private int mekanismMoreCapacity$getOutputCapacity() {
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteLiquifying.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeLiquifying.get();

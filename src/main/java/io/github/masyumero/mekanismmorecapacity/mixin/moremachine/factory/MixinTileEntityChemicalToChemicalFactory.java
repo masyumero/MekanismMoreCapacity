@@ -1,13 +1,14 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
+import com.jerry.mekaf.common.block.attribute.AttributeAdvancedFactoryType;
 import com.jerry.mekaf.common.content.blocktype.AdvancedFactoryType;
-import com.jerry.mekaf.common.tile.factory.base.TileEntityAdvancedFactoryBase;
 import com.jerry.mekaf.common.tile.factory.base.TileEntityChemicalToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
-import mekanism.api.recipes.MekanismRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
 import mekanism.common.config.value.CachedLongValue;
+import mekanism.common.tier.FactoryTier;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -18,14 +19,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityChemicalToChemicalFactory.class,remap = false)
-public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends MekanismRecipe<?>> extends TileEntityAdvancedFactoryBase<RECIPE> {
+public abstract class MixinTileEntityChemicalToChemicalFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityChemicalToChemicalFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityChemicalToChemicalFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;createModern(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -35,7 +33,9 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
 
     @Unique
     private CachedLongValue mekanismMoreCapacity$getInputConfigValue() {
-        if (getAdvancedFactoryType() == AdvancedFactoryType.CENTRIFUGING) {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
+        AdvancedFactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeAdvancedFactoryType.class).getAdvancedFactoryType();
+        if (type == AdvancedFactoryType.CENTRIFUGING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicCentrifugingFactoryinput;
@@ -57,7 +57,7 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateCentrifugingFactoryinput;
                 };
             }
-        } else {
+        } else if (type == AdvancedFactoryType.WASHING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicWashingFactoryInput;
@@ -80,6 +80,7 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                 };
             }
         }
+        throw new IllegalStateException("Unexpected value: " + type);
     }
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -89,7 +90,9 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
 
     @Unique
     private CachedLongValue mekanismMoreCapacity$getOutputConfigValue() {
-        if (getAdvancedFactoryType() == AdvancedFactoryType.CENTRIFUGING) {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
+        AdvancedFactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeAdvancedFactoryType.class).getAdvancedFactoryType();
+        if (type == AdvancedFactoryType.CENTRIFUGING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicCentrifugingFactoryoutput;
@@ -111,7 +114,7 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                     case ULTIMATE -> MMCConfig.MEK_MM_MACHINE_CONFIG.UltimateCentrifugingFactoryoutput;
                 };
             }
-        } else {
+        } else if (type == AdvancedFactoryType.WASHING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicWashingFactoryOutput;
@@ -134,5 +137,6 @@ public abstract class MixinTileEntityChemicalToChemicalFactory<RECIPE extends Me
                 };
             }
         }
+        throw new IllegalStateException("Unexpected value: " + type);
     }
 }

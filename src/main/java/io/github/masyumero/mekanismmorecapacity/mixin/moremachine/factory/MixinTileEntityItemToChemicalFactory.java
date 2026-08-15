@@ -1,13 +1,14 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
+import com.jerry.mekaf.common.block.attribute.AttributeAdvancedFactoryType;
 import com.jerry.mekaf.common.content.blocktype.AdvancedFactoryType;
-import com.jerry.mekaf.common.tile.factory.base.TileEntityAdvancedFactoryBase;
 import com.jerry.mekaf.common.tile.factory.base.TileEntityItemToChemicalFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
-import mekanism.api.recipes.MekanismRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
 import mekanism.common.config.value.CachedLongValue;
+import mekanism.common.tier.FactoryTier;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -18,14 +19,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityItemToChemicalFactory.class,remap = false)
-public abstract class MixinTileEntityItemToChemicalFactory<RECIPE extends MekanismRecipe<?>> extends TileEntityAdvancedFactoryBase<RECIPE> {
+public abstract class MixinTileEntityItemToChemicalFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityItemToChemicalFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityItemToChemicalFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -35,7 +33,9 @@ public abstract class MixinTileEntityItemToChemicalFactory<RECIPE extends Mekani
 
     @Unique
     private CachedLongValue mekanismMoreCapacity$getConfigValue() {
-        if (getAdvancedFactoryType() == AdvancedFactoryType.OXIDIZING) {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
+        AdvancedFactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeAdvancedFactoryType.class).getAdvancedFactoryType();
+        if (type == AdvancedFactoryType.OXIDIZING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
                     case "Basic" -> MMCConfig.MEK_MM_MACHINE_CONFIG.BasicOxidizingFactory;

@@ -1,10 +1,10 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras.integration;
 
+import com.jerry.mekextras.common.block.attribute.ExtraAttribute;
 import com.jerry.mekextras.common.integration.mekaf.tile.factory.TileEntityExtraDissolvingFactory;
-import com.jerry.mekextras.common.integration.mekaf.tile.factory.base.TileEntityExtraItemToChemicalFactory;
+import com.jerry.mekextras.common.tier.ExtraFactoryTier;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
-import mekanism.api.recipes.ChemicalDissolutionRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -14,14 +14,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityExtraDissolvingFactory.class, remap = false)
-public abstract class MixinTileEntityExtraDissolvingFactory extends TileEntityExtraItemToChemicalFactory<ChemicalDissolutionRecipe> {
+public abstract class MixinTileEntityExtraDissolvingFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityExtraDissolvingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityExtraDissolvingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;inputModern(JLjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -31,6 +28,7 @@ public abstract class MixinTileEntityExtraDissolvingFactory extends TileEntityEx
 
     @Unique
     private long mekanismMoreCapacity$getInputCapacity() {
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteDissolvingInput.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeDissolvingInput.get();

@@ -1,10 +1,10 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras.integration;
 
+import com.jerry.mekextras.common.block.attribute.ExtraAttribute;
 import com.jerry.mekextras.common.integration.mekaf.tile.factory.TileEntityExtraPRCFactory;
-import com.jerry.mekextras.common.integration.mekaf.tile.factory.base.TileEntityExtraAdvancedFactoryBase;
+import com.jerry.mekextras.common.tier.ExtraFactoryTier;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
-import mekanism.api.recipes.PressurizedReactionRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -14,14 +14,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityExtraPRCFactory.class, remap = false)
-public abstract class MixinTileEntityExtraPRCFactory extends TileEntityExtraAdvancedFactoryBase<PressurizedReactionRecipe> {
+public abstract class MixinTileEntityExtraPRCFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityExtraPRCFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityExtraPRCFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;createModern(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -41,6 +38,7 @@ public abstract class MixinTileEntityExtraPRCFactory extends TileEntityExtraAdva
 
     @Unique
     private long mekanismMoreCapacity$getInputCapacity() {
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePRCInput.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePRCInput.get();
@@ -51,6 +49,7 @@ public abstract class MixinTileEntityExtraPRCFactory extends TileEntityExtraAdva
 
     @Unique
     private long mekanismMoreCapacity$getOutputCapacity() {
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePRCOutput.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePRCOutput.get();
@@ -61,6 +60,7 @@ public abstract class MixinTileEntityExtraPRCFactory extends TileEntityExtraAdva
 
     @Unique
     private int mekanismMoreCapacity$getInputFluidCapacity() {
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (tier) {
             case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePRCFluidInput.get();
             case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePRCFluidInput.get();

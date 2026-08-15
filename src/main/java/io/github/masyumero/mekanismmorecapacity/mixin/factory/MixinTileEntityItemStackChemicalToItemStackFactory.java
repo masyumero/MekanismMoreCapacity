@@ -2,13 +2,12 @@ package io.github.masyumero.mekanismmorecapacity.mixin.factory;
 
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
-import mekanism.api.recipes.ItemStackChemicalToItemStackRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.common.block.attribute.Attribute;
 import mekanism.common.block.attribute.AttributeFactoryType;
 import mekanism.common.content.blocktype.FactoryType;
+import mekanism.common.tier.FactoryTier;
+import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.factory.TileEntityItemStackChemicalToItemStackFactory;
-import mekanism.common.tile.factory.TileEntityItemToItemFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -19,14 +18,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityItemStackChemicalToItemStackFactory.class, remap = false)
-public abstract class MixinTileEntityItemStackChemicalToItemStackFactory extends TileEntityItemToItemFactory<ItemStackChemicalToItemStackRecipe> {
+public abstract class MixinTileEntityItemStackChemicalToItemStackFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityItemStackChemicalToItemStackFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityItemStackChemicalToItemStackFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "getInitialChemicalTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;inputModern(JLjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -41,6 +37,7 @@ public abstract class MixinTileEntityItemStackChemicalToItemStackFactory extends
 
     @Unique
     private long mekanismMoreCapacity$getConfigValue() {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
         FactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeFactoryType.class).getFactoryType();
         if (type == FactoryType.COMPRESSING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {

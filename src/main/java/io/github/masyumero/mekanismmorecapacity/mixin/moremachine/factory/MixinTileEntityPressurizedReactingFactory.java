@@ -1,14 +1,12 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.moremachine.factory;
 
-import com.jerry.mekaf.common.tile.factory.base.TileEntityAdvancedFactoryBase;
 import com.jerry.mekaf.common.tile.factory.TileEntityPressurizedReactingFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import io.github.masyumero.mekanismmorecapacity.common.util.TierUtil;
-import mekanism.api.recipes.PressurizedReactionRecipe;
-import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
 import mekanism.common.config.value.CachedLongValue;
-import mekanism.common.recipe.lookup.ITripleRecipeLookupHandler;
-import mekanism.common.tile.interfaces.IHasDumpButton;
+import mekanism.common.tier.FactoryTier;
+import mekanism.common.tile.base.TileEntityMekanism;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -19,14 +17,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import java.util.List;
-import java.util.Set;
-
 @Mixin(value = TileEntityPressurizedReactingFactory.class, remap = false)
-public abstract class MixinTileEntityPressurizedReactingFactory extends TileEntityAdvancedFactoryBase<PressurizedReactionRecipe> implements IHasDumpButton, ITripleRecipeLookupHandler.ItemFluidChemicalRecipeLookupHandler<PressurizedReactionRecipe> {
+public abstract class MixinTileEntityPressurizedReactingFactory extends TileEntityMekanism {
 
-    protected MixinTileEntityPressurizedReactingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state, List<CachedRecipe.OperationTracker.RecipeError> errorTypes, Set<CachedRecipe.OperationTracker.RecipeError> globalErrorTypes) {
-        super(blockProvider, pos, state, errorTypes, globalErrorTypes);
+    public MixinTileEntityPressurizedReactingFactory(Holder<Block> blockProvider, BlockPos pos, BlockState state) {
+        super(blockProvider, pos, state);
     }
 
     @ModifyArg(method = "addTanks",at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;createModern(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
@@ -36,6 +31,7 @@ public abstract class MixinTileEntityPressurizedReactingFactory extends TileEnti
 
     @Unique
     private CachedLongValue mekanismMoreCapacity$getInputConfigValue() {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
         if (ModList.get().isLoaded("evolvedmekanism")) {
             return switch (TierUtil.getTierName(tier)) {
                 case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicPressurizedReactingFactoryinput;
@@ -66,6 +62,7 @@ public abstract class MixinTileEntityPressurizedReactingFactory extends TileEnti
 
     @Unique
     private CachedLongValue mekanismMoreCapacity$getOutputConfigValue() {
+        FactoryTier tier = Attribute.getTier(getBlockHolder(), FactoryTier.class);
         if (ModList.get().isLoaded("evolvedmekanism")) {
             return switch (TierUtil.getTierName(tier)) {
                 case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicPressurizedReactingFactoryoutput;
