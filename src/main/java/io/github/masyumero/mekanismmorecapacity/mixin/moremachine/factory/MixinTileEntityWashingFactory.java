@@ -31,11 +31,11 @@ public abstract class MixinTileEntityWashingFactory extends TileEntityChemicalTo
 
     @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;input(ILjava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;"))
     private int inputFluidTunkModify(int capacity) {
-        return mekanismMoreCapacity$getInputConfigValue().get();
+        return mekanismMoreCapacity$getConfigValue().get();
     }
 
     @Unique
-    private CachedIntValue mekanismMoreCapacity$getInputConfigValue() {
+    private CachedIntValue mekanismMoreCapacity$getConfigValue() {
         if (ModList.get().isLoaded("evolvedmekanism")) {
             return switch (TierUtil.getTierName(tier)) {
                 case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicWashingFactory;

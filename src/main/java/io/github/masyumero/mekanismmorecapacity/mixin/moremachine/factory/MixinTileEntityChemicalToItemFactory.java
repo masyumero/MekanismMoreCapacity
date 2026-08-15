@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
@@ -28,10 +29,11 @@ protected MixinTileEntityChemicalToItemFactory(Holder<Block> blockProvider, Bloc
 
     @ModifyArg(method = "addTanks",at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;inputModern(JLjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long outputModifyArg(long capacity) {
-        return getConfigValue().get();
+        return mekanismMoreCapacity$getConfigValue().get();
     }
 
-    private CachedLongValue getConfigValue() {
+    @Unique
+    private CachedLongValue mekanismMoreCapacity$getConfigValue() {
         if (ModList.get().isLoaded("evolvedmekanism")) {
             return switch (TierUtil.getTierName(tier)) {
                 case "Basic" ->         MMCConfig.MEK_MM_MACHINE_CONFIG.BasicCrystallizingFactory;

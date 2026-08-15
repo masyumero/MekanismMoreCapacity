@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
@@ -29,10 +30,11 @@ public abstract class MixinTileEntityItemToChemicalFactory<RECIPE extends Mekani
 
     @ModifyArg(method = "addTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long outputModifyArg(long capacity) {
-        return getConfigValue().get();
+        return mekanismMoreCapacity$getConfigValue().get();
     }
 
-    private CachedLongValue getConfigValue() {
+    @Unique
+    private CachedLongValue mekanismMoreCapacity$getConfigValue() {
         if (getAdvancedFactoryType() == AdvancedFactoryType.OXIDIZING) {
             if (ModList.get().isLoaded("evolvedmekanism")) {
                 return switch (TierUtil.getTierName(tier)) {
