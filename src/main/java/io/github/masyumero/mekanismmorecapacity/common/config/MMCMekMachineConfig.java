@@ -93,7 +93,7 @@ public class MMCMekMachineConfig extends BaseMekanismConfig {
         SolarNeutronActivatorInput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         SolarNeutronActivatorOutput = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity",1000000,1,Long.MAX_VALUE));
         builder.pop().push("sps");
-        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Multiply mekanism/general/sps/inputPerAntimatter by this number. Default: 200, Vanilla: 2").defineInRange("inputTankCapacity", 200, 1,1000000000L));
+        sps = CachedLongValue.wrap(this, builder.comment("Amount of input gas (mB) that the sps can store. Default: 200000, Vanilla: 2000").defineInRange("inputTankCapacity", 200000, 1,1000000000L));
         builder.pop().push("factories").push("InfusingFactory");
         BasicMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 300000, Vanilla: 3000").defineInRange("basicChemicalTankCapacity",300000,1,Long.MAX_VALUE));
         AdvancedMetallurgicInfuserFactory = CachedLongValue.wrap(this,builder.comment("Chemical tank capacity (mB). Default: 500000, Vanilla: 5000").defineInRange("advancedChemicalTankCapacity",500000,1,Long.MAX_VALUE));
