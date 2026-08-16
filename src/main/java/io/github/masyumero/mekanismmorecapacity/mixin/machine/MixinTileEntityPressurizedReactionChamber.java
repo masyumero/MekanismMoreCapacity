@@ -13,7 +13,7 @@ public class MixinTileEntityPressurizedReactionChamber {
         return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberChemicalInput.get();
     }
 
-    @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;create(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
+    @ModifyArg(method = "getInitialGasTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
     private long outputModifyArg(long c){
         return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberChemicalOutput.get();
     }
