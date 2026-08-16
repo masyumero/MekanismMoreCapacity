@@ -11,8 +11,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 import java.util.List;
 
@@ -24,12 +24,12 @@ public abstract class MixinTileEntitySolidifier extends TileEntityProgressMachin
         super(blockProvider, pos, state, errorTypes, baseTicksRequired);
     }
 
-    @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 10000, ordinal = 0))
+    @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;input(ILjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;", ordinal = 0))
     private int inputFluidTankModify(int constant) {
         return MMCConfig.EVO_MEK_MACHINE_CONFIG.SolidifierMoltenMaterial.get();
     }
 
-    @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 10000, ordinal = 1))
+    @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;input(ILjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;", ordinal = 1))
     private int inputFluidExtraTankModify(int constant) {
         return MMCConfig.EVO_MEK_MACHINE_CONFIG.SolidifierCoolantTank.get();
     }
