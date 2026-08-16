@@ -12,6 +12,7 @@ public class MixinTileEntityRotaryCondensentrator {
     private long modifyChemicalTankCapacity(long c){
         return MMCConfig.MEK_MACHINE_CONFIG.RotaryCondensentratorChemical.get();
     }
+
     @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;create(ILjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;"))
     private int modifyFluidTankCapacity(int c){
         return MMCConfig.MEK_MACHINE_CONFIG.RotaryCondensentratorFluid.get();

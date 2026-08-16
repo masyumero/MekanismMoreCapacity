@@ -9,9 +9,15 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(value = TileEntityPressurizedReactionChamber.class,remap = false)
 public class MixinTileEntityPressurizedReactionChamber {
     @ModifyArg(method = "getInitialChemicalTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;createModern(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
-    private long modifyChemicalTankCapacity(long c){
-        return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberChemical.get();
+    private long inputModifyArg(long c){
+        return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberChemicalInput.get();
     }
+
+    @ModifyArg(method = "getInitialChemicalTanks", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/BasicChemicalTank;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"))
+    private long outputModifyArg(long c){
+        return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberChemicalOutput.get();
+    }
+
     @ModifyArg(method = "getInitialFluidTanks", at = @At(value = "INVOKE", target = "Lmekanism/common/capabilities/fluid/BasicFluidTank;input(ILjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/fluid/BasicFluidTank;"))
     private int modifyFluidTankCapacity(int i){
         return MMCConfig.MEK_MACHINE_CONFIG.PressurizedReactionChamberFluid.get();

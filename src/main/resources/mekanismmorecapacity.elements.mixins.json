@@ -5,7 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "MekanismMoreCapacity.refmap.json",
   "mixins": [
-    "machine.MixinTileEntityChemicalInfuserSquared"
+    "machine.MixinTileEntityChemicalInfuserSquared",
+    "machine.MixinTileEntityElectricPump",
+    "moremachine.large.MixinTileEntityLargeAntiprotonicNucleosynthesizer",
+    "moremachine.large.MixinTileEntityLargeChemicalInfuser",
+    "moremachine.large.MixinTileEntityLargeElectrolyticSeparator",
+    "moremachine.large.MixinTileEntityLargePigmentMixer",
+    "moremachine.large.MixinTileEntityLargeRotaryCondensentrator",
+    "moremachine.large.MixinTileEntityLargeSolarNeutronActivator"
   ],
   "client": [
   ],

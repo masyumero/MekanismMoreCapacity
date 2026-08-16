@@ -13,10 +13,6 @@ public class MMCMekExtrasMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue SupremeMetallurgicInfuserFactory;
     public final CachedLongValue CosmicMetallurgicInfuserFactory;
     public final CachedLongValue InfiniteMetallurgicInfuserFactory;
-    //public final CachedLongValue Absolute;
-    //public final CachedLongValue Supreme;
-    //public final CachedLongValue Cosmic;
-    //public final CachedLongValue Infinite;
     public final CachedLongValue AbsoluteCompressing;
     public final CachedLongValue SupremeCompressing;
     public final CachedLongValue CosmicCompressing;
