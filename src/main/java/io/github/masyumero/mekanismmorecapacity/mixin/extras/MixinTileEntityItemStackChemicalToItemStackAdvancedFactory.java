@@ -44,13 +44,6 @@ public abstract class MixinTileEntityItemStackChemicalToItemStackAdvancedFactory
 
     @Unique
     private long mekanismMoreCapacity$getInputCapacity() {
-        // Read the factory type and tier from the block, NOT from this.type /
-        // this.tier. Mekanism calls getInitialChemicalTanks() from
-        // TileEntityMekanism.<init>, which runs before TileEntityExtraFactory's
-        // constructor assigns those fields -- so both are always null here and
-        // the switch NPEs. getBlockHolder() is valid during construction.
-        // This mirrors MixinTileEntityItemStackChemicalToItemStackFactory,
-        // which already resolves both from the block holder and does not crash.
         FactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeFactoryType.class).getFactoryType();
         ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (type) {
