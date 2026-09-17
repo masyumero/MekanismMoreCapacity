@@ -1,10 +1,15 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.extras;
 
+import com.jerry.mekextras.common.block.attribute.ExtraAttribute;
+import com.jerry.mekextras.common.tier.ExtraFactoryTier;
 import com.jerry.mekextras.common.tile.factory.TileEntityExtraItemStackChemicalToItemStackFactory;
 import com.jerry.mekextras.common.tile.factory.TileEntityExtraItemToItemFactory;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.recipes.ItemStackChemicalToItemStackRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
+import mekanism.common.block.attribute.Attribute;
+import mekanism.common.block.attribute.AttributeFactoryType;
+import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.recipe.lookup.IDoubleRecipeLookupHandler;
 import mekanism.common.recipe.lookup.IRecipeLookupHandler;
 import mekanism.common.tile.interfaces.IHasDumpButton;
@@ -39,26 +44,28 @@ public abstract class MixinTileEntityItemStackChemicalToItemStackAdvancedFactory
 
     @Unique
     private long mekanismMoreCapacity$getInputCapacity() {
+        FactoryType type = Attribute.getOrThrow(getBlockHolder(), AttributeFactoryType.class).getFactoryType();
+        ExtraFactoryTier tier = ExtraAttribute.getAdvancedTier(getBlockHolder(), ExtraFactoryTier.class);
         return switch (type) {
-            case INFUSING -> switch (this.tier) {
+            case INFUSING -> switch (tier) {
                 case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteMetallurgicInfuserFactory.get();
                 case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeMetallurgicInfuserFactory.get();
                 case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicMetallurgicInfuserFactory.get();
                 case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteMetallurgicInfuserFactory.get();
             };
-            case COMPRESSING -> switch (this.tier) {
+            case COMPRESSING -> switch (tier) {
                 case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteCompressing.get();
                 case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeCompressing.get();
                 case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicCompressing.get();
                 case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteCompressing.get();
             };
-            case INJECTING -> switch (this.tier) {
+            case INJECTING -> switch (tier) {
                 case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsoluteInjecting.get();
                 case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremeInjecting.get();
                 case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicInjecting.get();
                 case INFINITE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.InfiniteInjecting.get();
             };
-            default -> switch (this.tier) { //PURIFYING
+            default -> switch (tier) { //PURIFYING
                 case ABSOLUTE -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.AbsolutePurifying.get();
                 case SUPREME -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.SupremePurifying.get();
                 case COSMIC -> MMCConfig.MEK_EXTRAS_MACHINE_CONFIG.CosmicPurifying.get();
