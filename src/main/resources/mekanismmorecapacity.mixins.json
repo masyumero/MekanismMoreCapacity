@@ -9,6 +9,7 @@
     "elements.MixinTileEntityAdsorptionSeparator",
     "elements.MixinTileEntityAirCompressor",
     "elements.MixinTileEntityChemicalDemolitionMachine",
+    "elements.MixinTileEntityInfinityOreReprocessing",
     "elements.MixinTileEntityRadiationIrradiator",
     "elements.MixinTileEntitySeawaterPump",
     "evolved.MixinTileEntityChemixer",

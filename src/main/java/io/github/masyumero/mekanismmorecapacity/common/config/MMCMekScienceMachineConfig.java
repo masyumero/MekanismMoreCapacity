@@ -16,6 +16,7 @@ public class MMCMekScienceMachineConfig extends BaseMekanismConfig {
     public final CachedLongValue AirCompressor;
     public final CachedIntValue AdsorptionSeparatorInput;
     public final CachedLongValue AdsorptionSeparatorOutput;
+    public final CachedLongValue infinityOreReprocessing;
 
     public MMCMekScienceMachineConfig() {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -32,6 +33,8 @@ public class MMCMekScienceMachineConfig extends BaseMekanismConfig {
         builder.pop().push("AdsorptionSeparator");
         AdsorptionSeparatorInput = CachedIntValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("inputChemicalTankCapacity", 1000000, 1, Integer.MAX_VALUE));
         AdsorptionSeparatorOutput = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("outputChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
+        builder.pop().push("InfinityOreReprocessing");
+        infinityOreReprocessing = CachedLongValue.wrap(this, builder.comment("Chemical tank capacity (mB). Default: 1000000, Vanilla: 10000").defineInRange("ChemicalTankCapacity", 1000000, 1, Long.MAX_VALUE));
         configSpec = builder.build();
     }
 
