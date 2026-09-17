@@ -106,7 +106,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     compileOnly "mekanism:Mekanism:${mekanism_version}"
-    implementation "curse.maven:mekanism-elements-1103224:8378809" // 3.0.8
+    implementation "curse.maven:mekanism-elements-1103224:8839186" // 3.0.16
     implementation "curse.maven:mekanism-extras-1026040:7921191" // 1.4.0
     implementation "curse.maven:mekanism-more-machine-1275257:7919872" // 1.3.3
     implementation "curse.maven:evolved-mekanism-1230085:7599592" // 1.2.1-fix3

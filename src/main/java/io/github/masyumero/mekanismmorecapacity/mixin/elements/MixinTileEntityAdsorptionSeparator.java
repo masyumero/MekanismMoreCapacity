@@ -1,10 +1,10 @@
 package io.github.masyumero.mekanismmorecapacity.mixin.elements;
 
-import com.fxd927.mekanismelements.api.recipes.RadiationIrradiatingRecipe;
-import com.fxd927.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
-import com.fxd927.mekanismelements.common.recipe.lookup.IMSRecipeLookupHandler;
-import com.fxd927.mekanismelements.common.tile.machine.TileEntityAdsorptionSeparator;
-import com.fxd927.mekanismelements.common.tile.prefab.MSTileEntityProgressMachine;
+import fixdol.mekanismelements.api.recipes.RadiationIrradiatingRecipe;
+import fixdol.mekanismelements.common.recipe.lookup.IMSDoubleRecipeLookupHandler;
+import fixdol.mekanismelements.common.recipe.lookup.IMSRecipeLookupHandler;
+import fixdol.mekanismelements.common.tile.machine.TileEntityAdsorptionSeparator;
+import fixdol.mekanismelements.common.tile.prefab.MSTileEntityProgressMachine;
 import io.github.masyumero.mekanismmorecapacity.common.config.MMCConfig;
 import mekanism.api.recipes.cache.CachedRecipe;
 import net.minecraft.core.BlockPos;
