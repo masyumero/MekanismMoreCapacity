@@ -34,6 +34,7 @@
     "machine.MixinTileEntityChemicalOxidizer",
     "machine.MixinTileEntityChemicalWasher",
     "machine.MixinTileEntityElectrolyticSeparator",
+    "machine.MixinTileEntityElectricPump",
     "machine.MixinTileEntityIsotopicCentrifuge",
     "machine.MixinTileEntityMetallurgicInfuser",
     "machine.MixinTileEntityNutritionalLiquifier",
@@ -52,6 +53,12 @@
     "moremachine.factory.MixinTileEntityPressurizedReactingFactory",
     "moremachine.factory.MixinTileEntityReplicatingFactory",
     "moremachine.factory.MixinTileEntityWashingFactory",
+    "moremachine.large.MixinTileEntityLargeAntiprotonicNucleosynthesizer",
+    "moremachine.large.MixinTileEntityLargeChemicalInfuser",
+    "moremachine.large.MixinTileEntityLargeElectrolyticSeparator",
+    "moremachine.large.MixinTileEntityLargePigmentMixer",
+    "moremachine.large.MixinTileEntityLargeRotaryCondensentrator",
+    "moremachine.large.MixinTileEntityLargeSolarNeutronActivator",
     "prefab.MixinTileEntityAdvancedElectricMachine"
   ],
   "client": [
