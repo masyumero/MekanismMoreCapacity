@@ -17,13 +17,13 @@ public class MixinTileEntityChemicalInfuserSquared {
     }
 
     @TargetHandler(mixin = "fixdol.mekanismelements.mixin.MixinTileEntityChemicalInfuser",name = "getInitialGasTanksRedirect")
-    @ModifyArg(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;create(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 0))
+    @ModifyArg(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;input(JLjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 0))
     private long leftInputModifyArg(long c){
         return MMCConfig.MEK_MACHINE_CONFIG.ChemicalInfuserLeftInput.get();
     }
 
     @TargetHandler(mixin = "fixdol.mekanismelements.mixin.MixinTileEntityChemicalInfuser",name = "getInitialGasTanksRedirect")
-    @ModifyArg(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;create(JLjava/util/function/BiPredicate;Ljava/util/function/BiPredicate;Ljava/util/function/Predicate;Lmekanism/api/chemical/attribute/ChemicalAttributeValidator;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 1))
+    @ModifyArg(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lmekanism/api/chemical/ChemicalTankBuilder;input(JLjava/util/function/Predicate;Ljava/util/function/Predicate;Lmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;", ordinal = 1))
     private long rightInputModifyArg(long c){
         return MMCConfig.MEK_MACHINE_CONFIG.ChemicalInfuserRightInput.get();
     }
