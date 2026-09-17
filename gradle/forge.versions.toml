@@ -14,6 +14,7 @@ evolvedMekanism = "7599591" # 1.2.1-fix4
 mekanismMoreMachine = "7884538" # 1.2.1
 
 configured = "5180900"
+patchouli = "7731017"
 
 [libraries]
 mixinExtras-common      = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixinExtras" }
@@ -33,6 +34,7 @@ evolvedMekanism         = { module = "curse.maven:evolved-mekanism-1230085", ver
 mekanismMoreMachine     = { module = "curse.maven:mekanism-more-machine-1275257", version.ref = "mekanismMoreMachine" }
 
 configured              = { module = "curse.maven:configured-457570", version.ref = "configured"}
+patchouli               = { module = "curse.maven:patchouli-306770", version.ref = "patchouli"}
 
 [bundles]
 jei = ["jei-common-api", "jei-forge-api", "jei-forge-impl"]
