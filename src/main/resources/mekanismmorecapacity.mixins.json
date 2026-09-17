@@ -63,11 +63,11 @@
     "moremachine.large.MixinTileEntityLargeRotaryCondensentrator",
     "moremachine.large.MixinTileEntityLargeSolarNeutronActivator",
     "prefab.MixinTileEntityAdvancedElectricMachine",
-    "science.MixinTileEntityAdsorptionSeparator",
-    "science.MixinTileEntityAirCompressor",
-    "science.MixinTileEntityChemicalDemolitionMachine",
-    "science.MixinTileEntityRadiationIrradiator",
-    "science.MixinTileEntitySeawaterPump"
+    "elements.MixinTileEntityAdsorptionSeparator",
+    "elements.MixinTileEntityAirCompressor",
+    "elements.MixinTileEntityChemicalDemolitionMachine",
+    "elements.MixinTileEntityRadiationIrradiator",
+    "elements.MixinTileEntitySeawaterPump"
   ],
   "client": [
   ],
