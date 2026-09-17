@@ -119,6 +119,7 @@ dependencies {
     runtimeOnly "curse.maven:jade-324717:6291517"
     runtimeOnly "curse.maven:configured-457570:5873783"
     runtimeOnly "curse.maven:iglee-library-541199:7000755"
+    runtimeOnly "curse.maven:patchouli-306770:7730942"
 
     compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.3"))
     implementation(jarJar("com.github.bawnorton.mixinsquared:mixinsquared-neoforge:0.3.7-beta.3"))
