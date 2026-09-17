@@ -6,6 +6,12 @@
   "refmap": "MekanismMoreCapacity.refmap.json",
   "mixins": [
     "MixinSPSMultiblockData",
+    "elements.MixinTileEntityAdsorptionSeparator",
+    "elements.MixinTileEntityAirCompressor",
+    "elements.MixinTileEntityChemicalDemolitionMachine",
+    "elements.MixinTileEntityInfinityOreReprocessing",
+    "elements.MixinTileEntityRadiationIrradiator",
+    "elements.MixinTileEntitySeawaterPump",
     "evolved.MixinTileEntityChemixer",
     "evolved.MixinTileEntityMelter",
     "evolved.MixinTileEntitySolidifier",
@@ -62,12 +68,7 @@
     "moremachine.large.MixinTileEntityLargePigmentMixer",
     "moremachine.large.MixinTileEntityLargeRotaryCondensentrator",
     "moremachine.large.MixinTileEntityLargeSolarNeutronActivator",
-    "prefab.MixinTileEntityAdvancedElectricMachine",
-    "elements.MixinTileEntityAdsorptionSeparator",
-    "elements.MixinTileEntityAirCompressor",
-    "elements.MixinTileEntityChemicalDemolitionMachine",
-    "elements.MixinTileEntityRadiationIrradiator",
-    "elements.MixinTileEntitySeawaterPump"
+    "prefab.MixinTileEntityAdvancedElectricMachine"
   ],
   "client": [
   ],
